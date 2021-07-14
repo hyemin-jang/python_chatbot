@@ -8,8 +8,10 @@ from pathlib import Path
 #cmd 내 필요한 커맨드 키 
 #pip install pandas
 #pip install xrld
-#pip install beautifulsoup4                   
-
+#pip install os
+#pip install datetime
+#pip install requests
+#pip install pathlib
 
 
 url = "https://blogattach.naver.com/35a0299a8bd1d10d21c5a095a2443548e9be45a9e5/20210715_232_blogfile/rudqo0913_1626286527382_eNu8d0_xlsx/%C0%CE%B0%F8%C1%F6%B4%C9%C0%BB+%C8%B0%BF%EB%C7%D1+%C0%A5+%BC%AD%BA%F1%BD%BA+%B0%B3%B9%DF%C0%DA+%BE%E7%BC%BA%B0%FA%C1%A4+%2812%B1%E2%29_%C4%BF%B8%AE%C5%A7%B7%B3.xlsx"
