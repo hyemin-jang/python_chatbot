@@ -3,8 +3,6 @@ import requests
 from pprint import pprint
 import time
 
-name = "홍길동"  # 챗봇 시작 시 변수로 받아올 부분
-
 html = requests.get('https://search.naver.com/search.naver?query=날씨')
 
 soup = BeautifulSoup(html.text, 'html.parser')
@@ -43,7 +41,7 @@ o_state = o_data[idf+1:]
 
 
 def weather():
-    print(name + "님이 계신 " + location + "의 날씨를 알려드릴게요. 잠시만 기다려주세요")
+    print(location + "의 날씨를 알려드릴게요. 잠시만 기다려주세요")
     print()
     time.sleep(2)
     print("현재 " + location + "의 기온은 " + temperature + "℃ 입니다.")
