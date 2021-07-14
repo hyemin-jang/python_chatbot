@@ -6,27 +6,29 @@ def memoryGame():
     question_length = [6, 8, 10]   # 각 라운드별 나오는 숫자 개수
     answer = []
     user_input = []
-
+    print('*********************** 기억력 테스트 게임 ***********************')
+    time.sleep(1.5)
     print('숫자가 나온 순서대로 입력해주세요!')
     time.sleep(1.5)
     print('(숫자 사이 스페이스바, 완료 후 엔터)')
-    time.sleep(1.5)
+    time.sleep(2)
 
     # 나오는 숫자 개수 다르게 해서 3라운드 진행
     for length in question_length:   
         print('시작!')
-        time.sleep(1)
+        time.sleep(2)
         
-        # 각 라운드 진행
+    # 각 라운드 진행
+        # legth 길이만큼 숫자출력
         for i in range(length):
             n = random.randrange(0,10)
-            answer.append(str(n))    # user input이 문자로 들어오므로 문자로 저장
+            answer.append(str(n))    # user input이 문자로 들어올 것이므로 문자로 저장
             print(' '*i, n, end='\r')  # 숫자 가로로 이동하며 출력
             time.sleep(0.5)
             print(' '*(length+2), end='\r')
-            
-        user_input = input().strip().split(' ')
-        
+
+        # 유저 정답 받아서 확인   
+        user_input = input().strip().split(' ')        
         if answer == user_input:
             print('정답입니다!')
             time.sleep(1)
@@ -40,6 +42,3 @@ def memoryGame():
         
     print('게임이 끝났습니다 :)')
 
-
-if __name__ == "__main__":
-    memoryGame()
