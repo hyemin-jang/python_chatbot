@@ -58,20 +58,20 @@ def weather():
     print()
     time.sleep(2)
     print("현재 " + location + "의 기온은 " + temperature + "℃ 입니다.")
-    time.sleep(1.5)
+    time.sleep(1)
     print("오전 강수 확률은 " + rain_rate1 + "%이고, 오후 강수 확률은 " + rain_rate2 + "%입니다.")
-    time.sleep(1.5)
+    time.sleep(1)
     rain(rain_rate1, rain_rate2)
-    time.sleep(1.5)
+    time.sleep(1)
 
     if exc1 + exc2 + exc3 == 0:
         print("미세먼지 농도는 " + fine_dust + "로 " + f_state + " 상태이고,")
-        time.sleep(1.5)
+        time.sleep(1)
         print("초미세먼지 농도는 " + fine_ultra_dust + "로 " + fu_state + " 상태입니다.")
-        time.sleep(1.5)
+        time.sleep(1)
         print("오존은 " + ozone + "으로 " + o_state + " 상태입니다.")
         print()
-        time.sleep(1.5)
+        time.sleep(1)
 
     dress(temperature)
 
