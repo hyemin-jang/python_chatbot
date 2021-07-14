@@ -3,7 +3,7 @@ import time
 
 def memoryGame():
 
-    question_length = [6, 8, 10]   # 각 라운드별 나오는 숫자 개수
+    num_length = [6, 8, 10]   # 각 라운드별 나오는 숫자 개수
     
     print('\n*********************** 기억력 테스트 게임 ***********************')
     time.sleep(1.5)
@@ -13,7 +13,7 @@ def memoryGame():
     time.sleep(2)
 
     # 나오는 숫자 개수 다르게 해서 3라운드 진행
-    for length in question_length:  
+    for length in num_length:  
         answer = [] 
         user_input = []
         print('시작!')
@@ -33,7 +33,7 @@ def memoryGame():
         if answer == user_input:
             print('정답입니다!')
             time.sleep(1)
-            if length != question_length[-1]:  #마지막 라운드일경우 print 안하고 게임종료
+            if length != num_length[-1]:  #마지막 라운드일경우 print 안하고 게임종료
                 print('다음 단계로 넘어갑니다.')
                 time.sleep(1)
         else: 
