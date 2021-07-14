@@ -25,7 +25,6 @@ def hangmanGame():
                 time.sleep(1.5)
                 break
             if life == 0:
-                time.sleep(1.5)
                 print('실패! 남은 목숨이 없습니다ㅠㅠ')
                 time.sleep(1.5)    
                 print('정답은',word,'입니다.')
