@@ -6,6 +6,7 @@ import time
 html = requests.get('https://search.naver.com/search.naver?query=날씨')
 
 soup = BeautifulSoup(html.text, 'html.parser')
+
 data1 = soup.find('div', {'class': 'weather_box'})
 
 # 현재 위치, 기온 찾기
