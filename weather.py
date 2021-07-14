@@ -13,32 +13,49 @@ data1 = soup.find('div', {'class': 'weather_box'})
 location = data1.find('span', {'class': 'btn_select'}).text
 temperature = data1.find('span', {'class': 'todaytemp'}).text
 
-# 강수량
+# 강수 확률
 data2 = data1.find('li', {'class': 'date_info today'}
                    ).findAll('span', {'class': 'rain_rate'})
 rain_rate1 = data2[0].find('span', {'class': 'num'}).text
 rain_rate2 = data2[1].find('span', {'class': 'num'}).text
 
 
-data3 = data1.findAll('dd')
+data3 = data1.find('div', {'class': 'detail_box'}).findAll('dd')
+#data3 = data1.find('div', {'class': 'detail_box'}).findAll('dd')
 
+# 미세먼지, 초미세먼지, 오존 값이 있어서 data3이 null이 아닐 때만 실행
 # 미세먼지
-f_data = data3[0].get_text()
-idf = f_data.find('㎥')
-fine_dust = f_data[:idf+1]
-f_state = f_data[idf+1:]
+if (data3[0]):
+    f_data = data3[0].get_text()
+    idf = f_data.find('㎥')
+    fine_dust = f_data[:idf+1]
+    f_state = f_data[idf+1:]
+    exc1 = 0
+else:
+    exc1 = 1
+# print(exc1)
 
 # 초미세먼지
-fu_data = data3[1].get_text()
-idf = fu_data.find('㎥')
-fine_ultra_dust = fu_data[:idf+1]
-fu_state = fu_data[idf+1:]
+if(data3[1]):
+    fu_data = data3[1].get_text()
+    idf = fu_data.find('㎥')
+    fine_ultra_dust = fu_data[:idf+1]
+    fu_state = fu_data[idf+1:]
+    exc2 = 0
+else:
+    exc2 = 1
+# print(exc2)
 
 # 오존
-o_data = data3[2].get_text()
-idf = o_data.find('m')
-ozone = o_data[:idf+1]
-o_state = o_data[idf+1:]
+if(data3[2]):
+    o_data = data3[2].get_text()
+    idf = o_data.find('m')
+    ozone = o_data[:idf+1]
+    o_state = o_data[idf+1:]
+    exc3 = 0
+else:
+    exc3 = 1
+# print(exc3)
 
 
 def weather():
@@ -51,13 +68,16 @@ def weather():
     time.sleep(1.5)
     rain(rain_rate1, rain_rate2)
     time.sleep(1.5)
-    print("미세먼지 농도는 " + fine_dust + "로 " + f_state + " 상태이고,")
-    time.sleep(1.5)
-    print("초미세먼지 농도는 " + fine_ultra_dust + "로 " + fu_state + " 상태입니다.")
-    time.sleep(1.5)
-    print("오존은 " + ozone + "으로 " + o_state + " 상태입니다.")
-    print()
-    time.sleep(1.5)
+
+    if exc1 + exc2 + exc3 == 0:
+        print("미세먼지 농도는 " + fine_dust + "로 " + f_state + " 상태이고,")
+        time.sleep(1.5)
+        print("초미세먼지 농도는 " + fine_ultra_dust + "로 " + fu_state + " 상태입니다.")
+        time.sleep(1.5)
+        print("오존은 " + ozone + "으로 " + o_state + " 상태입니다.")
+        print()
+        time.sleep(1.5)
+
     dress(temperature)
 
 

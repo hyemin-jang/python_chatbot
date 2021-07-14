@@ -15,6 +15,7 @@ def startChat():
 
         global name
         name = input("이름을 입력해주세요.\n")
+        choose()
 
     elif answer == "N":
         endChat()
@@ -33,8 +34,7 @@ def endChat():
 
 
 def choose():
-    time.sleep(1)
-    print()
+
     print(name + "님, 무엇을 도와드릴까요?")
     time.sleep(1)
 
@@ -50,6 +50,8 @@ def choose():
         print("메뉴 번호를 잘못 입력하셨습니다.")
         time.sleep(1)
         choose()
+    else:
+        func()
 
 
 def func():
@@ -76,7 +78,6 @@ def func():
         print("----------------------------------------"*3)
         time.sleep(1)
         choose()
-        func()
 
     else:
         endChat()
