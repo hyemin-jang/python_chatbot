@@ -41,7 +41,7 @@ o_state = o_data[idf+1:]
 
 
 def weather():
-    print(location + "의 날씨를 알려드릴게요. 잠시만 기다려주세요")
+    print("지금 계신 " + location + "의 날씨를 알려드릴게요. 잠시만 기다려주세요")
     print()
     time.sleep(2)
     print("현재 " + location + "의 기온은 " + temperature + "℃ 입니다.")
