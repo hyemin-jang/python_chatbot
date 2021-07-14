@@ -1,6 +1,11 @@
 import time
 
+# 각각 기능 담은 파일 호출
+#import alarm as al
 import weather as wt
+# 시간표
+import menuselect as ms
+import minigame as mg
 import corona as cn
 
 
@@ -9,9 +14,11 @@ def startChat():
     answer = input("채팅을 시작하시겠습니까?  Y or N\n")
 
     if answer == "Y":
-        print("=============== start! ===============")
+        print("============================== start! ==============================")
         print("안녕하세요. 채팅을 시작합니다.")
         time.sleep(1)
+
+        # 여기는 알람 함수 호출 위치!!
 
         global name
         name = input("이름을 입력해주세요.\n")
@@ -30,7 +37,7 @@ def startChat():
 def endChat():
     time.sleep(1)
     print("다음에 이야기 나눠요~!")
-    print("=============== end! ===============")
+    print("============================== end! ==============================")
 
 
 def choose():
@@ -64,11 +71,11 @@ def func():
             print("\n시간표 시작")
             # timetable()
         elif cnum == "3":
-            print("\n점심메뉴 시작")
-            # lunch()
+            time.sleep(1)
+            ms.menu()
         elif cnum == "4":
-            print("\n미니게임 시작")
-            # minigame()
+            time.sleep(1)
+            mg.miniGame()
         elif cnum == "5":
             time.sleep(1)
             cn.corona()

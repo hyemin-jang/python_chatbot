@@ -21,9 +21,7 @@ rain_rate2 = data2[1].find('span', {'class': 'num'}).text
 
 
 data3 = data1.find('div', {'class': 'detail_box'}).findAll('dd')
-#data3 = data1.find('div', {'class': 'detail_box'}).findAll('dd')
 
-# 미세먼지, 초미세먼지, 오존 값이 있어서 data3이 null이 아닐 때만 실행
 # 미세먼지
 if (data3[0]):
     f_data = data3[0].get_text()
@@ -33,7 +31,6 @@ if (data3[0]):
     exc1 = 0
 else:
     exc1 = 1
-# print(exc1)
 
 # 초미세먼지
 if(data3[1]):
@@ -44,7 +41,6 @@ if(data3[1]):
     exc2 = 0
 else:
     exc2 = 1
-# print(exc2)
 
 # 오존
 if(data3[2]):
@@ -55,7 +51,6 @@ if(data3[2]):
     exc3 = 0
 else:
     exc3 = 1
-# print(exc3)
 
 
 def weather():
@@ -84,17 +79,17 @@ def weather():
 def dress(temp):
     temp = int(temp)
     print("< 파이썬 챗봇의 오늘 코디 추천 >")
-    if temp > 25:
+    if temp >= 27:
         print("으아..날씨가 너무 더워요! 반팔 반바지 시원하게 입고, 물 자주 챙겨 마셔요~")
-    if 20 <= temp <= 25:
+    elif temp in range(20, 27):
         print("날씨가 제법 더워요! 반팔에 얇은 셔츠나 가디건 하나 챙기시는 것은 어떤가요~?")
-    if 12 <= temp < 20:
+    elif temp in range(12, 20):
         print("날씨가 제법 선선해요! 얇은 니트나 맨투맨을 추천드려요~")
-    if 9 <= temp < 12:
+    elif temp in range(9, 12):
         print("날씨가 조금 쌀쌀해요! 자켓, 트렌치코트로 멋내기 좋아요~")
-    if 5 <= temp < 9:
+    elif temp in range(5, 9):
         print("날씨가 조금 추워요! 포근한 니트에 코트 챙겨 입으세요~")
-    elif temp < 5:
+    else:
         print("날씨가 엄청 추워요! 패딩이나 두꺼운 코트 입고 나가세요~")
 
 
