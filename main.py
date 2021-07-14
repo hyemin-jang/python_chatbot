@@ -1,7 +1,7 @@
 import time
 
 # 각각 기능 담은 파일 호출
-#import alarm as al
+import alarm as al
 import weather as wt
 # 시간표
 import menuselect as ms
@@ -18,7 +18,7 @@ def startChat():
         print("안녕하세요. 채팅을 시작합니다.")
         time.sleep(1)
 
-        # 여기는 알람 함수 호출 위치!!
+        al.qrcheck()
 
         global name
         name = input("이름을 입력해주세요.\n")
