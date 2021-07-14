@@ -1,1 +1,1 @@
-test!!
+print(input().strip().split())
