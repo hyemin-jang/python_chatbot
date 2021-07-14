@@ -62,7 +62,7 @@ def weather():
 
 def dress(temp):
     temp = int(temp)
-    print("< E조 챗봇의 오늘 코디 추천 >")
+    print("< 파이썬 챗봇의 오늘 코디 추천 >")
     if temp > 25:
         print("으아..날씨가 너무 더워요! 반팔 반바지 시원하게 입고, 물 자주 챙겨 마셔요~")
     if 20 <= temp <= 25:
