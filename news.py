@@ -1,3 +1,4 @@
+from os import name
 import requests
 from bs4 import BeautifulSoup
 import time
@@ -19,6 +20,10 @@ def todayNews():
 
     time.sleep(1)
     print(search_word, "최신 뉴스 5개를 알려드립니다.")
-    print("\n- ".join(titles[0:5]))
+    print()
+
+    for i in range(5):
+        print("-", titles[i])
+
 
 #     print(nkeyword)

@@ -60,43 +60,40 @@ def choose():
     cnum = input(
         "1:날씨 정보 \t 2:플레이데이터 시간표 \t 3:점심메뉴 고르기 \t 4:미니게임 \t 5: 코로나 확진 현황 \t 6: 오늘의 뉴스 정보 999: 챗봇 종료\n")
 
-    clist = ["1", "2", "3", "4", "5", "6" "999"]
-    if cnum not in clist:
+    clist = ["1", "2", "3", "4", "5", "6"]
+    if cnum in clist:
+        func()
+    elif cnum == "999":
+        endChat()
+    else:
         print("메뉴 번호를 잘못 입력하셨습니다.")
         time.sleep(1)
         choose()
-    else:
-        func()
 
 
 def func():
-    # 기능 메뉴를 선택했다면
-    if cnum in ["1", "2", "3", "4", "5"]:
-        if cnum == "1":
-            time.sleep(1)
-            wt.weather()
-        elif cnum == "2":
-            time.sleep(1)
-            ps.print_schedule()
-        elif cnum == "3":
-            time.sleep(1)
-            ms.menu()
-        elif cnum == "4":
-            time.sleep(1)
-            mg.miniGame()
-        elif cnum == "5":
-            time.sleep(1)
-            cn.corona()
-        elif cnum == "6":
-            time.sleep(1)
-            n.todayNews()
 
-        print()
+    if cnum == "1":
         time.sleep(1)
-        print("----------------------------------------"*3)
+        wt.weather()
+    elif cnum == "2":
         time.sleep(1)
-        choose()
+        ps.print_schedule()
+    elif cnum == "3":
+        time.sleep(1)
+        ms.menu()
+    elif cnum == "4":
+        time.sleep(1)
+        mg.miniGame()
+    elif cnum == "5":
+        time.sleep(1)
+        cn.corona()
+    elif cnum == "6":
+        time.sleep(1)
+        n.todayNews()
 
-    # 채팅 종료를 선택했다면
-    else:
-        endChat()
+    print()
+    time.sleep(1)
+    print("----------------------------------------"*3)
+    time.sleep(1)
+    choose()

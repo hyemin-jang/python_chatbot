@@ -22,4 +22,4 @@ def qrcheck():
         my_list = ["인생에 집중하세요", "많이 먹지마세요",
                    "조심하세요", "돈을 빌리지 마세요", "좋은 연락이 옵니다"]
         result = random.choice(my_list)
-        print(result)
+        print("오늘의 운세 : ", result)
