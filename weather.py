@@ -6,54 +6,63 @@ html = requests.get('https://search.naver.com/search.naver?query=날씨')
 
 soup = BeautifulSoup(html.text, 'html.parser')
 
-data1 = soup.find('div', {'class': 'weather_box'})
 
 # 현재 위치, 기온 찾기
-location = data1.find('span', {'class': 'btn_select'}).text
-temperature = int(data1.find('span', {'class': 'todaytemp'}).text)
+location = soup.select('span.btn_select > em')[0].get_text()
+temperature = int(soup.select('.todaytemp')[0].get_text())
 
 # 강수 확률
-data2 = data1.find('li', {'class': 'date_info today'}
-                   ).findAll('span', {'class': 'rain_rate'})
-rain_rate1 = int(data2[0].find('span', {'class': 'num'}).text)
-rain_rate2 = int(data2[1].find('span', {'class': 'num'}).text)
+rain_rate1 = int(soup.select('span.point_time > span.rain_rate > span.num')[
+    0].get_text())
+rain_rate2 = int(soup.select('span.point_time > span.rain_rate > span.num')[
+    1].get_text())
+
+# # 미세먼지
+# #fine_dust = soup.select('dl.indicator > dd > span.num')[0].get_text()
+# f_data = soup.select('dl.indicator > dd')[0].get_text()
+# idx = f_data.find("㎥")
+# fine_dust = f_data[:idx+1]
+# f_state = f_data[idx+1:]
+
+# # 초미세먼지
+# #fine_ultra_dust = soup.select('dl.indicator > dd > span.num')[1].get_text()
+# fu_data = soup.select('dl.indicator > dd')[1].get_text()
+# idx = fu_data.find("㎥")
+# fine_ultra_dust = fu_data[:idx+1]
+# fu_state = fu_data[idx+1:]
+
+# # 오존
+# #ozone = soup.select('dl.indicator > dd > span.num')[2].get_text()
+# o_data = soup.select('dl.indicator > dd')[2].get_text()
+# idx = o_data.find("m")
+# ozone = o_data[:idx+1]
+# o_state = o_data[idx+1:]
 
 
-data3 = data1.find('div', {'class': 'detail_box'}).findAll('dd')
+def dustOzone():
+    n_list = []
+    s_list = []
+    sep = ["㎥", "㎥", "m"]
 
-# 미세먼지
-if (data3[0]):
-    f_data = data3[0].get_text()
-    idf = f_data.find('㎥')
-    fine_dust = f_data[:idf+1]
-    f_state = f_data[idf+1:]
-    exc1 = 0
-else:
-    exc1 = 1
+    for i in range(3):
+        data = soup.select('dl.indicator > dd')[i].get_text()
+        idx = data.find(sep[i])
+        if idx != -1:
+            n_list.append(data[:idx+1])
+            s_list.append(data[idx+1:])
+        else:
+            break
 
-# 초미세먼지
-if(data3[1]):
-    fu_data = data3[1].get_text()
-    idf = fu_data.find('㎥')
-    fine_ultra_dust = fu_data[:idf+1]
-    fu_state = fu_data[idf+1:]
-    exc2 = 0
-else:
-    exc2 = 1
+    return n_list, s_list
 
-# 오존
-if(data3[2]):
-    o_data = data3[2].get_text()
-    idf = o_data.find('m')
-    ozone = o_data[:idf+1]
-    o_state = o_data[idf+1:]
-    exc3 = 0
-else:
-    exc3 = 1
+
+dustOzone
+print(dustOzone()[0][0])
+print(len(dustOzone()[0]))
 
 
 def weather():
-    print("지금 계신 {}의 날씨를 알려드릴게요. 잠시만 기다려주세요".format(location))
+    print("지금 계신 {}의 날씨를 알려드릴게요. 잠시만 기다려주세요\b".format(location))
     print()
     time.sleep(2)
     print("현재 {}의 기온은 {}℃ 입니다.".format(location, temperature))
@@ -63,19 +72,24 @@ def weather():
     rain(rain_rate1, rain_rate2)
     time.sleep(1)
 
-    if exc1 + exc2 + exc3 == 0:
-        print("미세먼지 농도는 {}로 {} 상태이고,".format(fine_dust, f_state))
-        time.sleep(1)
-        print("초미세먼지 농도는 {}로 {} 상태입니다.".format(fine_ultra_dust, fu_state))
-        time.sleep(1)
-        print("오존은 {}으로 {} 상태입니다.".format(ozone, o_state))
-        print()
-        time.sleep(1)
+    dustOzone()
 
+    if (len(dustOzone()[0]) == 3) & (len(dustOzone()[1]) == 3):
+        print("미세먼지 농도는 {}로 {} 상태이고,".format(
+            dustOzone()[0][0], dustOzone()[1][0]))
+        time.sleep(1)
+        print("초미세먼지 농도는 {}로 {} 상태입니다.".format(
+            dustOzone()[0][1], dustOzone()[1][1]))
+        time.sleep(1)
+        print("오존은 {}으로 {} 상태입니다.".format(
+            dustOzone()[0][2], dustOzone()[1][2]))
+
+    time.sleep(1)
     dress(temperature)
 
 
 def dress(temp):
+    print()
     print("< 파이썬 챗봇의 오늘 코디 추천 >")
     if temp >= 27:
         print("으아..날씨가 너무 더워요! 반팔 반바지 시원하게 입고, 물 자주 챙겨 마셔요~")

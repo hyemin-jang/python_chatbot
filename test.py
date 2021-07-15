@@ -1,3 +1,3 @@
-from main2 import *
+from main import *
 
 chatbot()
