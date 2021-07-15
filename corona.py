@@ -7,12 +7,13 @@ html = requests.get(
 
 soup = BeautifulSoup(html.text, 'html.parser')
 
-
-data1 = soup.find('div', {'class': 'status_info'})
-
 # 총 확진자 수와 오늘 확진자 수 찾기
-total = data1.find('p', {'class': 'info_num'}).text
-today = data1.find('em', {'class': 'info_variation'}).text
+# select()
+total = soup.select('p.info_num')[0].get_text()
+today = soup.select('em.info_variation')[0].get_text()
+# find()
+#total = soup.find('p', {'class': 'info_num'}).text
+#today = soup.find('em', {'class': 'info_variation'}).text
 
 
 def corona():
@@ -24,3 +25,6 @@ def corona():
     print("총 확진 환자는 " + total + "명 입니다.")
     time.sleep(1.5)
     print("코로나 조심하세요!")
+
+
+corona()

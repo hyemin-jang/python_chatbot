@@ -10,13 +10,13 @@ data1 = soup.find('div', {'class': 'weather_box'})
 
 # 현재 위치, 기온 찾기
 location = data1.find('span', {'class': 'btn_select'}).text
-temperature = data1.find('span', {'class': 'todaytemp'}).text
+temperature = int(data1.find('span', {'class': 'todaytemp'}).text)
 
 # 강수 확률
 data2 = data1.find('li', {'class': 'date_info today'}
                    ).findAll('span', {'class': 'rain_rate'})
-rain_rate1 = data2[0].find('span', {'class': 'num'}).text
-rain_rate2 = data2[1].find('span', {'class': 'num'}).text
+rain_rate1 = int(data2[0].find('span', {'class': 'num'}).text)
+rain_rate2 = int(data2[1].find('span', {'class': 'num'}).text)
 
 
 data3 = data1.find('div', {'class': 'detail_box'}).findAll('dd')
@@ -53,22 +53,22 @@ else:
 
 
 def weather():
-    print("지금 계신 " + location + "의 날씨를 알려드릴게요. 잠시만 기다려주세요")
+    print("지금 계신 {}의 날씨를 알려드릴게요. 잠시만 기다려주세요".format(location))
     print()
     time.sleep(2)
-    print("현재 " + location + "의 기온은 " + temperature + "℃ 입니다.")
+    print("현재 {}의 기온은 {}℃ 입니다.".format(location, temperature))
     time.sleep(1)
-    print("오전 강수 확률은 " + rain_rate1 + "%이고, 오후 강수 확률은 " + rain_rate2 + "%입니다.")
+    print("오전 강수 확률은 {}%이고, 오후 강수 확률은 {}%입니다.".format(rain_rate1, rain_rate2))
     time.sleep(1)
     rain(rain_rate1, rain_rate2)
     time.sleep(1)
 
     if exc1 + exc2 + exc3 == 0:
-        print("미세먼지 농도는 " + fine_dust + "로 " + f_state + " 상태이고,")
+        print("미세먼지 농도는 {}로 {} 상태이고,".format(fine_dust, f_state))
         time.sleep(1)
-        print("초미세먼지 농도는 " + fine_ultra_dust + "로 " + fu_state + " 상태입니다.")
+        print("초미세먼지 농도는 {}로 {} 상태입니다.".format(fine_ultra_dust, fu_state))
         time.sleep(1)
-        print("오존은 " + ozone + "으로 " + o_state + " 상태입니다.")
+        print("오존은 {}으로 {} 상태입니다.".format(ozone, o_state))
         print()
         time.sleep(1)
 
@@ -76,7 +76,6 @@ def weather():
 
 
 def dress(temp):
-    temp = int(temp)
     print("< 파이썬 챗봇의 오늘 코디 추천 >")
     if temp >= 27:
         print("으아..날씨가 너무 더워요! 반팔 반바지 시원하게 입고, 물 자주 챙겨 마셔요~")
@@ -95,8 +94,8 @@ def dress(temp):
 def rain(rate1, rate2):
     now = time.strftime('%H')
     if int(now) < 12:
-        if (int(rate1) > 50 | int(rate2) > 50):
+        if (rate1 > 50 | rate2 > 50):
             print("오늘 비가 올 것 같아요. 우산을 챙기세요!")
     elif int(now) >= 12:
-        if int(rate2) > 50:
+        if rate2 > 50:
             print("오늘 오후에 비가 올 것 같아요. 우산을 챙기세요")

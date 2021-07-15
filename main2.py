@@ -13,10 +13,10 @@ import news as n
 def chatbot():
     answer = input("채팅을 시작하시겠습니까?  Y or N\n")
 
-    if answer == "Y":
+    if answer in ["Y", "y"]:
         startChat()
 
-    elif answer == "N":
+    elif answer in ["N", "n"]:
         endChat()
 
     else:
@@ -30,14 +30,12 @@ def startChat():
     time.sleep(1)
     print("============================== start! ==============================")
     print("안녕하세요. 채팅을 시작합니다.")
-    print()
     time.sleep(1)
 
     al.qrcheck()
-
     time.sleep(1)
     global name
-    name = input("이름을 입력해주세요.\n")
+    name = input("\n이름을 입력해주세요.\n")
     choose()
 
 
@@ -81,7 +79,7 @@ def func():
         ps.print_schedule()
     elif cnum == "3":
         time.sleep(1)
-        ms.menu()
+        ms.select_menu()
     elif cnum == "4":
         time.sleep(1)
         mg.miniGame()
