@@ -25,6 +25,3 @@ def corona():
     print("총 확진 환자는 " + total + "명 입니다.")
     time.sleep(1.5)
     print("코로나 조심하세요!")
-
-
-corona()

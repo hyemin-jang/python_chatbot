@@ -1,6 +1,6 @@
 import time
 
-# 각각 기능 담은 파일 호출
+# 각각 기능 담은 파일 import
 import alarm as al
 import weather as wt
 import print_schedule as ps

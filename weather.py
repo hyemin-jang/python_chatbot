@@ -17,28 +17,8 @@ rain_rate1 = int(soup.select('span.point_time > span.rain_rate > span.num')[
 rain_rate2 = int(soup.select('span.point_time > span.rain_rate > span.num')[
     1].get_text())
 
-# # 미세먼지
-# #fine_dust = soup.select('dl.indicator > dd > span.num')[0].get_text()
-# f_data = soup.select('dl.indicator > dd')[0].get_text()
-# idx = f_data.find("㎥")
-# fine_dust = f_data[:idx+1]
-# f_state = f_data[idx+1:]
 
-# # 초미세먼지
-# #fine_ultra_dust = soup.select('dl.indicator > dd > span.num')[1].get_text()
-# fu_data = soup.select('dl.indicator > dd')[1].get_text()
-# idx = fu_data.find("㎥")
-# fine_ultra_dust = fu_data[:idx+1]
-# fu_state = fu_data[idx+1:]
-
-# # 오존
-# #ozone = soup.select('dl.indicator > dd > span.num')[2].get_text()
-# o_data = soup.select('dl.indicator > dd')[2].get_text()
-# idx = o_data.find("m")
-# ozone = o_data[:idx+1]
-# o_state = o_data[idx+1:]
-
-
+# 미세먼지, 초미세먼지, 오존
 def dustOzone():
     n_list = []
     s_list = []
@@ -56,11 +36,6 @@ def dustOzone():
     return n_list, s_list
 
 
-dustOzone
-print(dustOzone()[0][0])
-print(len(dustOzone()[0]))
-
-
 def weather():
     print("지금 계신 {}의 날씨를 알려드릴게요. 잠시만 기다려주세요\b".format(location))
     print()
@@ -69,7 +44,9 @@ def weather():
     time.sleep(1)
     print("오전 강수 확률은 {}%이고, 오후 강수 확률은 {}%입니다.".format(rain_rate1, rain_rate2))
     time.sleep(1)
+
     rain(rain_rate1, rain_rate2)
+
     time.sleep(1)
 
     dustOzone()
@@ -108,8 +85,12 @@ def dress(temp):
 def rain(rate1, rate2):
     now = time.strftime('%H')
     if int(now) < 12:
-        if (rate1 > 50 | rate2 > 50):
+        if (rate1 > 50 or rate2 > 50):
             print("오늘 비가 올 것 같아요. 우산을 챙기세요!")
-    elif int(now) >= 12:
+        else:
+            print("오늘은 비가 올 것 같지 않네요!")
+    else:
         if rate2 > 50:
             print("오늘 오후에 비가 올 것 같아요. 우산을 챙기세요")
+        else:
+            print("오늘 오후에는 비가 올 것 같지 않네요")
