@@ -1,6 +1,5 @@
 from bs4 import BeautifulSoup
 import requests
-from pprint import pprint
 import time
 
 html = requests.get('https://search.naver.com/search.naver?query=날씨')
