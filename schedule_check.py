@@ -24,4 +24,4 @@ def schedule_check():
             print('잘못된 입력 값입니다.')
             continue
 
-print(schedule_check())
+schedule_check()
