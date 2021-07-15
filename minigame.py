@@ -1,11 +1,12 @@
 import time
 import random
-import memory, anagram, hangman
+import memory
+import anagram
+import hangman
+
 
 def miniGame():
-    print('공부하느라 지치시죠?', end='\r') 
-    time.sleep(2)
-    print('게임 한판 하고 리프레쉬 하세요!', end='\r')
+    print('공부하느라 지치시죠? 게임 한판 하고 리프레쉬 하세요!', end='\r')
     time.sleep(2)
 
     playing = 'y'
@@ -23,15 +24,12 @@ def miniGame():
         elif choice == '4':
             playing = 'n'
             break
+        else:
+            print('잘못 입력하셨습니다.')
+            playing = 'y'
+            time.sleep(1)
+            continue
 
-        playing = input('다른 게임을 플레이하시겠어요?  y/n >>') 
-        
-    print('다음에 또 같이 놀아요~')
+        playing = input('다른 게임을 플레이하시겠어요?  y/n >>')
 
-if __name__ == "__main__":
-    miniGame()
-
-
-## 추가할 사항:
-# 한판 깰때마다 점수주기
-
+    print('다음에 다시 만나요~')

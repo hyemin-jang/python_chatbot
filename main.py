@@ -75,7 +75,6 @@ def func():
             time.sleep(1)
             wt.weather()
         elif cnum == "2":
-            print("2번")
             time.sleep(1)
             ps.print_schedule()
         elif cnum == "3":
