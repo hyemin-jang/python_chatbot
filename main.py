@@ -3,7 +3,7 @@ import time
 # 각각 기능 담은 파일 import
 import alarm as al
 import weather as wt
-import print_schedule as ps
+import schedule_check as sc
 import menuselect as ms
 import minigame as mg
 import corona as cn
@@ -76,7 +76,7 @@ def func():
         wt.weather()
     elif cnum == "2":
         time.sleep(1)
-        ps.print_schedule()
+        sc.schedule_check()
     elif cnum == "3":
         time.sleep(1)
         ms.select_menu()

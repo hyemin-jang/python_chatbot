@@ -19,21 +19,18 @@ rain_rate2 = int(soup.select('span.point_time > span.rain_rate > span.num')[
 
 
 # 미세먼지, 초미세먼지, 오존
-def dustOzone():
-    n_list = []
-    s_list = []
-    sep = ["㎥", "㎥", "m"]
+n_list = []
+s_list = []
+sep = ["㎥", "㎥", "m"]
 
-    for i in range(3):
-        data = soup.select('dl.indicator > dd')[i].get_text()
-        idx = data.find(sep[i])
-        if idx != -1:
-            n_list.append(data[:idx+1])
-            s_list.append(data[idx+1:])
-        else:
-            break
-
-    return n_list, s_list
+for i in range(3):
+    data = soup.select('dl.indicator > dd')[i].get_text()
+    idx = data.find(sep[i])
+    if idx != -1:
+        n_list.append(data[:idx+1])
+        s_list.append(data[idx+1:])
+    else:
+        break
 
 
 def weather():
@@ -49,17 +46,15 @@ def weather():
 
     time.sleep(1)
 
-    dustOzone()
-
-    if (len(dustOzone()[0]) == 3) & (len(dustOzone()[1]) == 3):
+    if (len(n_list) == 3) & (len(s_list) == 3):
         print("미세먼지 농도는 {}로 {} 상태이고,".format(
-            dustOzone()[0][0], dustOzone()[1][0]))
+            n_list[0], s_list[0]))
         time.sleep(1)
         print("초미세먼지 농도는 {}로 {} 상태입니다.".format(
-            dustOzone()[0][1], dustOzone()[1][1]))
+            n_list()[1], s_list[1]))
         time.sleep(1)
         print("오존은 {}으로 {} 상태입니다.".format(
-            dustOzone()[0][2], dustOzone()[1][2]))
+            n_list()[2], s_list[2]))
 
     time.sleep(1)
     dress(temperature)
