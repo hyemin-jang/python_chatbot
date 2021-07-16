@@ -23,17 +23,15 @@ n_list = []
 s_list = []
 sep = ["㎥", "㎥", "m"]
 
-for i in range(3):
-    if len(soup.select('dl.indicator > dd') == 3:
-        data=soup.select('dl.indicator > dd')[i].get_text()
-        idx=data.find(sep[i])
+if len(soup.select('dl.indicator > dd')) == 3:
+    for i in range(3):
+        data = soup.select('dl.indicator > dd')[i].get_text()
+        idx = data.find(sep[i])
         if idx != -1:
             n_list.append(data[:idx+1])
             s_list.append(data[idx+1:])
         else:
             break
-    else:
-        break
 
 
 def weather():
@@ -63,6 +61,20 @@ def weather():
     dress(temperature)
 
 
+def rain(rate1, rate2):
+    now = time.strftime('%H')
+    if int(now) < 12:
+        if (rate1 > 50 or rate2 > 50):
+            print("오늘 비가 올 것 같아요. 우산을 챙기세요!")
+        else:
+            print("오늘은 비가 올 것 같지 않네요!")
+    else:
+        if rate2 > 50:
+            print("오늘 오후에 비가 올 것 같아요. 우산을 챙기세요")
+        else:
+            print("오늘 오후에는 비가 올 것 같지 않네요")
+
+
 def dress(temp):
     print()
     print("< 파이썬 챗봇의 오늘 코디 추천 >")
@@ -78,17 +90,3 @@ def dress(temp):
         print("날씨가 조금 추워요! 포근한 니트에 코트 챙겨 입으세요~")
     else:
         print("날씨가 엄청 추워요! 패딩이나 두꺼운 코트 입고 나가세요~")
-
-
-def rain(rate1, rate2):
-    now=time.strftime('%H')
-    if int(now) < 12:
-        if (rate1 > 50 or rate2 > 50):
-            print("오늘 비가 올 것 같아요. 우산을 챙기세요!")
-        else:
-            print("오늘은 비가 올 것 같지 않네요!")
-    else:
-        if rate2 > 50:
-            print("오늘 오후에 비가 올 것 같아요. 우산을 챙기세요")
-        else:
-            print("오늘 오후에는 비가 올 것 같지 않네요")
