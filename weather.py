@@ -52,10 +52,10 @@ def weather():
             n_list[0], s_list[0]))
         time.sleep(1)
         print("초미세먼지 농도는 {}로 {} 상태입니다.".format(
-            n_list()[1], s_list[1]))
+            n_list[1], s_list[1]))
         time.sleep(1)
         print("오존은 {}으로 {} 상태입니다.".format(
-            n_list()[2], s_list[2]))
+            n_list[2], s_list[2]))
 
     time.sleep(1)
     dress(temperature)
