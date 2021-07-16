@@ -23,6 +23,3 @@ def schedule_check():
             time.sleep(1)
             print('잘못된 입력 값입니다.')
             continue
-
-
-schedule_check()

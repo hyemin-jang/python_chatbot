@@ -31,4 +31,9 @@ def miniGame():
 
         playing = input('다른 게임을 플레이하시겠어요?  y/n >>')
 
+        while playing not in ['y', 'n']:
+            print('잘못 입력하셨습니다.')
+            time.sleep(1)
+            playing = input('다른 게임을 플레이하시겠어요?  y/n >>')
+
     print('다음에 다시 만나요~')
