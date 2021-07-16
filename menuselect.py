@@ -3,28 +3,6 @@ import time
 import random
 
 
-def game():
-    name_list = list(map(str, input("이름을 입력해주세요 : ").split()))
-    winner = random.choice(name_list)
-    for i in range(3, 0, -1):
-        time.sleep(1)
-        print(i)
-    time.sleep(1)
-    print('오늘은 ' + winner + '이가 쏜다!!')
-
-
-def retry():
-    print("\n잘못 입력하셨습니다. 다시 입력해주세요.\n")
-    time.sleep(1)
-    select_menu()
-
-
-def endSelect():
-    time.sleep(1)
-    print("식사 맛있게 하세요~~")
-    print("=============== end! ===============")
-
-
 def select_menu():
     df = pd.read_excel('food_list.xlsx')
 
@@ -63,3 +41,25 @@ def select_after():
         print("\n잘못 입력하셨습니다. 다시 입력해주세요.\n")
         time.sleep(1)
         select_after()
+
+
+def game():
+    name_list = input("참가자들의 이름을 입력해주세요 : ").split()
+    winner = random.choice(name_list)
+    for i in range(3, 0, -1):
+        time.sleep(1)
+        print(i)
+    time.sleep(1)
+    print('오늘은 ' + winner + '(이)가 쏜다!!')
+
+
+def retry():
+    print("\n잘못 입력하셨습니다. 다시 입력해주세요.\n")
+    time.sleep(1)
+    select_menu()
+
+
+def endSelect():
+    time.sleep(1)
+    print("식사 맛있게 하세요~~")
+    print("=============== end! ===============")
