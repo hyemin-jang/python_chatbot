@@ -11,8 +11,10 @@ def schedule_check():
         option = input("1. 오늘 학습할 내용   2. 해당 날짜 학습할 내용   3. 나가기 : ")
         if option == '1':
             schedule.print_schedule()
+            print()
         elif option == '2':
             schedule.study_in_advance()
+            print()
         elif option == '3':
             time.sleep(1)
             print("이용해주셔서 감사합니다. ")
@@ -21,3 +23,6 @@ def schedule_check():
             time.sleep(1)
             print('잘못된 입력 값입니다.')
             continue
+
+
+schedule_check()

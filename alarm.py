@@ -15,6 +15,7 @@ def qrcheck():
                    "단순하고 멍청하게 대항하는 것이\n 두려움 극복의 지름길이다.", "삶은 실수투성이야, 우리는 늘 실수를 하지.\n - 영화 '주토피아'", "좋은 연락이 옵니다"]
         result = random.choice(my_list)
         print("오늘의 명언\n :", result)
+        print()
     fortune()
 
     happytime = now.strftime('%H:%M')
