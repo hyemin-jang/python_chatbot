@@ -24,11 +24,14 @@ s_list = []
 sep = ["㎥", "㎥", "m"]
 
 for i in range(3):
-    data = soup.select('dl.indicator > dd')[i].get_text()
-    idx = data.find(sep[i])
-    if idx != -1:
-        n_list.append(data[:idx+1])
-        s_list.append(data[idx+1:])
+    if len(soup.select('dl.indicator > dd') == 3:
+        data=soup.select('dl.indicator > dd')[i].get_text()
+        idx=data.find(sep[i])
+        if idx != -1:
+            n_list.append(data[:idx+1])
+            s_list.append(data[idx+1:])
+        else:
+            break
     else:
         break
 
@@ -78,7 +81,7 @@ def dress(temp):
 
 
 def rain(rate1, rate2):
-    now = time.strftime('%H')
+    now=time.strftime('%H')
     if int(now) < 12:
         if (rate1 > 50 or rate2 > 50):
             print("오늘 비가 올 것 같아요. 우산을 챙기세요!")
