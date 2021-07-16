@@ -3,6 +3,7 @@ from datetime import datetime
 import os
 import urllib.request
 import time
+from CONST import CONST
 
 
 # cmd 내 필요한 커맨드 키
@@ -11,8 +12,6 @@ import time
 # pip install os
 # pip install datetime
 # pip install requests
-
-
 
 
 def hours_minutes_seconds(time_left):
@@ -49,10 +48,14 @@ def check_time_left(right_now):
         print("고생하셨습니다. 오늘 한 것들 잘 마무리 해주시고 다음 수업 준비해주세요!")
 
 
+
+
 def download_file_and_open_excel():
-    PLAYDATA_FILE =  "인공지능을 활용한 웹 서비스 개발자 양성과정 (12기)_커리큘럼.xlsx"
-    url = "https://blog.kakaocdn.net/dn/b1lTSN/btq9zFt84zP/RxpfvHb8bQCqzcuXHIYKf0/%EC%9D%B8%EA%B3%B5%EC%A7%80%EB%8A%A5%EC%9D%84%2B%ED%99%9C%EC%9A%A9%ED%95%9C%2B%EC%9B%B9%2B%EC%84%9C%EB%B9%84%EC%8A%A4%2B%EA%B0%9C%EB%B0%9C%EC%9E%90%2B%EC%96%91%EC%84%B1%EA%B3%BC%EC%A0%95%2B%2812%EA%B8%B0%29_%EC%BB%A4%EB%A6%AC%ED%81%98%EB%9F%BC.xlsx?attach=1&knm=tfile.xlsx"
-    urllib.request.urlretrieve(url,  PLAYDATA_FILE) # 인공지능을 활용한 웹 서비스 개발자 양성과정 파일 명을 url에서 다운받는 라이브러리
+    
+        
+    
+    
+    urllib.request.urlretrieve(CONST.URL,  CONST.PLAYDATA_FILE) # 인공지능을 활용한 웹 서비스 개발자 양성과정 파일 명을 url에서 다운받는 라이브러리
     
     
     find_schedule_excel_location = os.path.abspath("인공지능을 활용한 웹 서비스 개발자 양성과정 (12기)_커리큘럼.xlsx")  # 현재 디렉토리 위치에 있는 파일명과 디렉토리 주소를 가져옴
@@ -66,8 +69,8 @@ def print_schedule():
     schedule = download_file_and_open_excel()
 
     now = datetime.now().strftime("%Y-%m-%d")
-    END_DATE = datetime(2021, 12, 27, 18, 0, 0)
-    수료식 = END_DATE - datetime.now() #수료식까지 완료날에서부터 오늘날까지 값을 빼는 계산
+ #   END_DATE = datetime(2021, 12, 27, 18, 0, 0)
+    수료식 = CONST.END_DATE - datetime.now() #수료식까지 완료날에서부터 오늘날까지 값을 빼는 계산
 
 
     for i in range(len(schedule)):
@@ -75,27 +78,18 @@ def print_schedule():
         일수 = schedule.values[i][1]
         주제 = schedule.values[i][2]
         세부 = schedule.values[i][3]
-        
         월일년 = 일자.split('-')
-    
         
         if (now == 일자):
             time.sleep(1)
             print("오늘은 {0}년 {1}월 {2}일입니다.".format(월일년[0], 월일년[1], 월일년[2]))
-
-
             time.sleep(1)
             print("오늘의 플레이데이터 교육 일수는 {0}일차로, 이번 주차 과목 주제는 {1}이고, ".format(int(일수), 주제))
-
-
             time.sleep(1)
             print("해당 과목 세부 주제는 {0} 입니다.".format(세부))
-            
             time.sleep(1)
             check_time_left(datetime.now())
-            
             break
-
     time.sleep(1)
     print('수료까지', 수료식.days, '일 남았습니다')
     
@@ -142,5 +136,6 @@ def study_in_advance():
     if study_date != 일자:
         time.sleep(1)
         print("입력한 날짜의 데이터는 엑셀 파일 내에 존재하지 않습니다.")
+    
     
         
