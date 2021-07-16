@@ -52,7 +52,7 @@ def check_time_left(right_now):
 
 def download_file_and_open_excel():
     urllib.request.urlretrieve(CONST.URL,  CONST.PLAYDATA_FILE) # 인공지능을 활용한 웹 서비스 개발자 양성과정 파일 명을 url에서 다운받는 라이브러리
-    find_schedule_excel_location = os.path.abspath("인공지능을 활용한 웹 서비스 개발자 양성과정 (12기)_커리큘럼.xlsx")  # 현재 디렉토리 위치에 있는 파일명과 디렉토리 주소를 가져옴
+    find_schedule_excel_location = os.path.abspath(CONST.PLAYDATA_FILE)  # 현재 디렉토리 위치에 있는 파일명과 디렉토리 주소를 가져옴
     grab_schedule = pd.read_excel(find_schedule_excel_location)  # 가져온 디렉토리 명내 파일 읽음 
     return grab_schedule
     
@@ -68,10 +68,10 @@ def print_schedule():
 
 
     for i in range(len(schedule)):
-        일자 = schedule.values[i][0].strftime("%Y-%m-%d")  #20xx-xx-xx
-        일수 = schedule.values[i][1]
-        주제 = schedule.values[i][2]
-        세부 = schedule.values[i][3]
+        일자 = schedule['일자'][i].strftime("%Y-%m-%d")  #20xx-xx-xx
+        일수 = schedule['일수'][i]
+        주제 = schedule['주제'][i]
+        세부 = schedule['세부'][i]
         월일년 = 일자.split('-')
         
         if (now == 일자):
@@ -89,6 +89,7 @@ def print_schedule():
     
 
 def study_in_advance():
+    time.sleep(1)
     study_date = input("선행학습 내용을 알고싶은 날짜를 알려주세요! [단, 20xx-xx-xx 형식으로 기재해주세요.] : ")
     
     check = {}
@@ -104,9 +105,11 @@ def study_in_advance():
                 check_list = study_date.split('-')
                 if len(check_list[0]) == 4 and len(check_list[1]) == 2 and len(check_list[2]) == 2 and check_list[0].isdigit() and check_list[1].isdigit() and check_list[2].isdigit():
                     년, 월, 일 = int(check_list[0]), int(check_list[1]), int(check_list[2])
+                    time.sleep(1)
                     print("기입된 정보 확인했습니다. {0}년 {1}월 {2}일 데이터 정보 확인해보겠습니다.".format(년, 월, 일))
                     break
         except:
+            time.sleep(1)
             print("잘못된 형식의 기입입니다. 날짜 형식을 20xx-xx-xx 형태로 알려주세요: ", end = "" )
             study_date = input()
     
