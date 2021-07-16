@@ -1,6 +1,7 @@
 import time
-import random
-import memory, anagram, hangman
+import memorygame as mg
+import anagramgame as ag
+import hangmangame as hg
 
 def miniGame():
     print('공부하느라 지치시죠? 게임 한판 하고 리프레쉬 하세요!', end='\r')
@@ -13,11 +14,11 @@ def miniGame():
         print('1.기억력 테스트   2.용어 복습 게임(oracle)   3.용어 복습 게임(java)   4.나가기')
         choice = input('번호를 입력해주세요 >> ')
         if choice == '1':
-            memory.memoryGame()
+            mg.memoryGame()
         elif choice == '2':
-            anagram.anagramGame()
+            ag.anagramGame()
         elif choice == '3':
-            hangman.hangmanGame()
+            hg.hangmanGame()
         elif choice == '4':
             playing = 'n'
             break      
@@ -32,3 +33,5 @@ def miniGame():
     print('다음에 다시 만나요~')
 
 
+
+miniGame()
