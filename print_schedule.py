@@ -35,7 +35,7 @@ def check_time_left(right_now):
     elif 아침시간 < right_now < 점심시간:
         시차 = 점심시간 - right_now
         시간, 분, 초 = hours_minutes_seconds(시차)
-        print("점심시간까지 {0}분 {1}분 {2}초 남았습니다. 조금만 더 힘내세요!".format(시간, 분, 초))
+        print("점심시간까지 {0}시 {1}분 {2}초 남았습니다. 조금만 더 힘내세요!".format(시간, 분, 초))
 
 
     elif (점심시간 < right_now < 종강시간):
@@ -51,13 +51,7 @@ def check_time_left(right_now):
 
 
 def download_file_and_open_excel():
-    
-        
-    
-    
     urllib.request.urlretrieve(CONST.URL,  CONST.PLAYDATA_FILE) # 인공지능을 활용한 웹 서비스 개발자 양성과정 파일 명을 url에서 다운받는 라이브러리
-    
-    
     find_schedule_excel_location = os.path.abspath("인공지능을 활용한 웹 서비스 개발자 양성과정 (12기)_커리큘럼.xlsx")  # 현재 디렉토리 위치에 있는 파일명과 디렉토리 주소를 가져옴
     grab_schedule = pd.read_excel(find_schedule_excel_location)  # 가져온 디렉토리 명내 파일 읽음 
     return grab_schedule
@@ -136,6 +130,5 @@ def study_in_advance():
     if study_date != 일자:
         time.sleep(1)
         print("입력한 날짜의 데이터는 엑셀 파일 내에 존재하지 않습니다.")
-    
     
         
