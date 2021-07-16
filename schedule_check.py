@@ -8,20 +8,21 @@ def schedule_check():
     print("===================================================================================")
     
     
-    time.sleep(2)
-    
-    
     while True:
+        time.sleep(2)
         option = input("1. 오늘 학습할 내용   2. 해당 날짜 학습할 내용   3. 나가기 : ")
         if option == '1':
             schedule.print_schedule()
         elif option == '2':
             schedule.study_in_advance()
         elif option == '3':
+            time.sleep(1)
             print("이용해주셔서 감사합니다. ")
             break
         else:
+            time.sleep(1)
             print('잘못된 입력 값입니다.')
             continue
+    
 
 schedule_check()
