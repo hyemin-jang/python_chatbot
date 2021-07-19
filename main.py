@@ -10,6 +10,9 @@ import minigame as mg
 import corona as cn
 import news as n
 
+# db 연동
+import dbconnect as db
+
 
 def chatbot():
     answer = input("채팅을 시작하시겠습니까?  Y or N\n")
@@ -39,7 +42,6 @@ def startChat():
     global name, now
 
     name = input("\n이름을 입력해주세요.\n")
-    check = time.localtime()
     now = datetime.now()
 
     choose()
@@ -49,6 +51,9 @@ def endChat():
     time.sleep(1)
     print("다음에 이야기 나눠요~!")
     print("============================== end! ==============================")
+
+    if (name):
+        db.db()
 
 
 def choose():
