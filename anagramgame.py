@@ -2,8 +2,9 @@ import time
 import random
 
 def anagramGame():
-
-    words = ['subquery', 'grouping', 'inner join']
+    global ag_score
+    ag_score = 0
+    words = ['select', 'rollup', 'subquery', 'inner join']
     
     print('\n*********************** oracle 용어 맞추기 게임 ***********************')
     time.sleep(1.5)
@@ -17,13 +18,16 @@ def anagramGame():
         user_input = input('정답 >> ')
         answerCheck(word, user_input)
 
-        if success == False:
+        if success == True:
+            ag_score += 10
+        else:
             break
         if word != words[-1]:
             print('다음 단계로 넘어갑니다.')
             time.sleep(1) 
     
-    print('게임이 끝났습니다 :)')  
+    print('게임이 끝났습니다:)\n( oracle 용어 맞추기 게임 총점수:',ag_score,')')
+    time.sleep(2)
 
 
 

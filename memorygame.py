@@ -2,6 +2,8 @@ import random
 import time
 
 def memoryGame():
+    global mg_score
+    mg_score = 0
     level = [6, 8, 10]    
 
     print('\n*********************** 기억력 테스트 게임 ***********************')
@@ -19,13 +21,16 @@ def memoryGame():
         user_input = input('정답 >> ')
         answerCheck(user_input, answer)    
 
-        if success == False:
+        if success == True:
+            mg_score += 10
+        else:
             break
         if lv != level[-1]:
             print('다음 단계로 넘어갑니다.')
             time.sleep(1) 
             
-    print('게임이 끝났습니다 :)')
+    print('게임이 끝났습니다:)\n( 기억력 테스트 게임 총점수:',mg_score,')')
+    time.sleep(2)
 
 
 # 랜덤 숫자 생성해서 출력
@@ -61,6 +66,6 @@ def answerCheck(user_input, answer):
 
 
 
-        
+
 
         
