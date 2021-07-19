@@ -1,4 +1,5 @@
 import time
+from datetime import datetime
 
 # 각각 기능 담은 파일 import
 import alarm as al
@@ -8,11 +9,6 @@ import menuselect as ms
 import minigame as mg
 import corona as cn
 import news as n
-
-# db 연동에 필요한 패키지 import
-import pandas as pd
-import cx_Oracle
-from datetime import datetime
 
 
 def chatbot():
@@ -105,21 +101,3 @@ def func():
     print("----------------------------------------"*3)
     time.sleep(1)
     choose()
-
-
-chatbot()
-
-
-# db 연동
-cx_Oracle.init_oracle_client(lib_dir=r"C:\playdata\oracle\instantclient_19_11")
-connection = cx_Oracle.connect(
-    user='ora01', password='oracle_4U2021', dsn='mydb_high')
-
-cursor = connection.cursor()
-
-sql = 'INSERT INTO chatbot VALUES (:chatbotName, :rightNow, :loca)'
-cursor.execute(sql, chatbotName=name, rightNow=now, loca=wt.location)
-
-connection.commit()
-cursor.close()
-connection.close()
