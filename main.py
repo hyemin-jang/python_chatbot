@@ -39,25 +39,12 @@ def startChat():
 
     al.qrcheck()
     time.sleep(1)
-    global name
+
+    global name, now
+
     name = input("\n이름을 입력해주세요.\n")
     check = time.localtime()
     now = datetime.now()
-
-    # db연동
-    cx_Oracle.init_oracle_client(
-        lib_dir=r"C:\playdata\oracle\instantclient_19_11")
-    connection = cx_Oracle.connect(
-        user='ora01', password='oracle_4U2021', dsn='mydb_high')
-
-    cursor = connection.cursor()
-
-    sql = 'insert into chatbot values (:chatbotName, :rightNow)'
-    cursor.execute(sql, chatbotName=name, rightNow=now)
-
-    connection.commit()
-    cursor.close()
-    connection.close()
 
     choose()
 
@@ -118,3 +105,21 @@ def func():
     print("----------------------------------------"*3)
     time.sleep(1)
     choose()
+
+
+chatbot()
+
+
+# db 연동
+cx_Oracle.init_oracle_client(lib_dir=r"C:\playdata\oracle\instantclient_19_11")
+connection = cx_Oracle.connect(
+    user='ora01', password='oracle_4U2021', dsn='mydb_high')
+
+cursor = connection.cursor()
+
+sql = 'INSERT INTO chatbot VALUES (:chatbotName, :rightNow, :loca)'
+cursor.execute(sql, chatbotName=name, rightNow=now, loca=wt.location)
+
+connection.commit()
+cursor.close()
+connection.close()
