@@ -9,6 +9,11 @@ import minigame as mg
 import corona as cn
 import news as n
 
+# db 연동에 필요한 패키지 import
+import pandas as pd
+import cx_Oracle
+from datetime import datetime
+
 
 def chatbot():
     answer = input("채팅을 시작하시겠습니까?  Y or N\n")
@@ -36,6 +41,24 @@ def startChat():
     time.sleep(1)
     global name
     name = input("\n이름을 입력해주세요.\n")
+    check = time.localtime()
+    now = datetime.now()
+
+    # db연동
+    cx_Oracle.init_oracle_client(
+        lib_dir=r"C:\playdata\oracle\instantclient_19_11")
+    connection = cx_Oracle.connect(
+        user='ora01', password='oracle_4U2021', dsn='mydb_high')
+
+    cursor = connection.cursor()
+
+    sql = 'insert into chatbot values (:chatbotName, :rightNow)'
+    cursor.execute(sql, chatbotName=name, rightNow=now)
+
+    connection.commit()
+    cursor.close()
+    connection.close()
+
     choose()
 
 
