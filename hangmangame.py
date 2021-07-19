@@ -1,8 +1,12 @@
 import time
 
 def hangmanGame():
+<<<<<<< HEAD
     global words, life, unknown, user_input, checked_letter, hg_score
     hg_score = 0
+=======
+    global words, life, unknown, user_input, checked_letter
+>>>>>>> fe684152eea89276b997b1bf163364c5913cb44b
     words = {'class' : '설계도' ,
              'instance' : 'A a = new A()', 
              'overriding' : '메소드 OOOOO'}
@@ -32,16 +36,24 @@ def hangmanGame():
         successCheck(word) 
         round += 1
 
+<<<<<<< HEAD
         if success == True:
             hg_score += 10
         else:
+=======
+        if success == False:
+>>>>>>> fe684152eea89276b997b1bf163364c5913cb44b
             break
         if round < len(words):
             print('다음 단계로 넘어갑니다.')
             time.sleep(1)        
             
+<<<<<<< HEAD
     print('게임이 끝났습니다:)\n( java 용어 맞추기 게임 총점수:',hg_score,')')
     time.sleep(2)
+=======
+    print('게임이 끝났습니다 :)') 
+>>>>>>> fe684152eea89276b997b1bf163364c5913cb44b
 
 
 def validCheck(word):     
