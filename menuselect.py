@@ -17,6 +17,8 @@ def select_menu():
         time.sleep(1)
         select_menu()
 
+inputed_type=None 
+inputed_name=None
 def add_menu():
     global inputed_type, inputed_name
     inputed_type = input("한식, 중식, 일식, 양식, 아시아 중 하나를 선택해주세요 : ")
