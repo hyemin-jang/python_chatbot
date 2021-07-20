@@ -5,8 +5,8 @@ import hangmangame
 
 score = None
 
-def miniGame(): 
-    global score    
+def miniGame():    
+    global score 
     score = 0
     print('공부하느라 지치시죠? 게임 한판 하고 리프레쉬 하세요!', end='\r')
     time.sleep(2)

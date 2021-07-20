@@ -1,6 +1,10 @@
 import time
 from datetime import datetime
 
+# db 연동에 필요한 패키지 import
+import pandas as pd
+import cx_Oracle
+
 # 각각 기능 담은 파일 import
 import alarm as al
 import weather as wt
@@ -15,6 +19,11 @@ import dbconnect as db
 
 
 def chatbot():
+    global connection, cursor
+    cx_Oracle.init_oracle_client(lib_dir=r"C:\oracle\instantclient_19_11")
+    connection = cx_Oracle.connect(user='ora01', password='oracle_4U2021', dsn='mydb_high')
+    cursor = connection.cursor()
+    
     answer = input("채팅을 시작하시겠습니까?  Y or N\n")
 
     if answer in ["Y", "y"]:
@@ -32,7 +41,8 @@ def chatbot():
 
 def startChat():
     time.sleep(1)
-    print("============================== start! ==============================")
+    start = " start! "
+    print("="*((100-len(start))//2) + start + "="*((100-len(start))//2))
     print("안녕하세요. 채팅을 시작합니다.")
     time.sleep(1)
 
@@ -41,7 +51,7 @@ def startChat():
 
     global name, now
 
-    name = input("\n이름을 입력해주세요.\n")
+    name = input("이름을 입력해주세요.\n")
     now = datetime.now()
 
     choose()
@@ -50,16 +60,16 @@ def startChat():
 def endChat():
     time.sleep(1)
     print("다음에 이야기 나눠요~!")
-    print("============================== end! ==============================")
+    end = " end! "
+    print("="*((100-len(end))//2) + end + "="*((100-len(end))//2))
 
     if (name):
         db.db()
 
 
 def choose():
-    print()
     time.sleep(1)
-    print(name + "님, 무엇을 도와드릴까요?")
+    print("\n" + name + "님, 무엇을 도와드릴까요?")
     time.sleep(1)
 
     print("실행하고 싶은 메뉴 번호를 입력해주세요.")
@@ -103,6 +113,6 @@ def func():
 
     print()
     time.sleep(1)
-    print("----------------------------------------"*3)
+    print("===================="*5)
     time.sleep(1)
     choose()

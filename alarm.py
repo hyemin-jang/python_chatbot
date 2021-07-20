@@ -16,6 +16,7 @@ def qrcheck():
         result = random.choice(my_list)
         print("오늘의 명언\n :", result)
         print()
+    print()
     fortune()
 
     happytime = now.strftime('%H:%M')
@@ -24,13 +25,9 @@ def qrcheck():
             "입실 완료하셨나요? \n아직 안했다면, QR코드를 보여드립니다. \n[아직 안함요- 1]  [이미 했음- 2] \n")
         if checker == "1":
             qropen()
-        else:
-            fortune()
 
     elif "17:50" < happytime < "18:30":
         checker = input(
             "퇴실 완료하셨나요? \n아직 안했다면, QR코드를 보여드립니다. \n[아직 안함요- 1]  [이미 했음- 2] \n")
         if checker == "1":
             qropen()
-        else:
-            fortune()

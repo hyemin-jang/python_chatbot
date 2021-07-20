@@ -21,18 +21,14 @@ main에서 import 된 변수 : m.해당파일 별명.해당파일 내 변수명 
 
 # db 연동
 def db():
-    cx_Oracle.init_oracle_client(
-        lib_dir=r"C:\management\oraclework\instantclient_19_11")
-    connection = cx_Oracle.connect(
-        user='ora01', password='oracle_4U2021', dsn='mydb_high')
 
-    cursor = connection.cursor()
+    sql = 'INSERT INTO chatbot(username, jointime, location, gamescore, newskeyword) VALUES (:name, :time, :loca, :score, :search_word)'
+    m.cursor.execute(sql, name=m.name, time=m.now,
+                   loca=m.wt.location, score=m.mg.score, search_word=m.n.search_word)
+    
+    sql2 = 'INSERT INTO foodlist(username, foodtype, foodname) VALUES (:name, :type, :fname)'
+    m.cursor.execute(sql2, name=m.name, type=m.ms.inputed_type, fname=m.ms.inputed_name)
 
-    sql = 'INSERT INTO chatbot(username, jointime, location, gamescore) VALUES (:name, :time, :loca, :score)'
-    cursor.execute(sql, name=m.name, time=m.now, loca=m.wt.location, score=m.mg.score)
-
-    connection.commit()
-    cursor.close()
-    connection.close()
-
-
+    m.connection.commit()
+    m.cursor.close()
+    m.connection.close()
