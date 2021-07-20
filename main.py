@@ -16,13 +16,15 @@ import check_db_info as di
 # db 연동
 import dbconnect as db
 
-
-def chatbot():
+def db_connect():
     global connection, cursor
     cx_Oracle.init_oracle_client(lib_dir=r"C:\management\oraclework\instantclient_19_11")
     connection = cx_Oracle.connect(user='ora01', password='oracle_4U2021', dsn='mydb_high')
     cursor = connection.cursor()
-    
+    chatbot()
+
+
+def chatbot():
     answer = input("채팅을 시작하시겠습니까?  Y or N\n")
 
     if answer in ["Y", "y"]:
@@ -63,7 +65,7 @@ def endChat():
     print("="*((100-len(end))//2) + end + "="*((100-len(end))//2))
 
     if (name):
-        db.db()
+        db.db_insert_data()
 
 
 def choose():
@@ -118,4 +120,4 @@ def func():
     time.sleep(1)
     choose()
 
-print(chatbot())
+

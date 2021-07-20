@@ -17,7 +17,7 @@ main에서 import 된 변수 : m.해당파일 별명.해당파일 내 변수명 
 
 
 # db 연동
-def db():
+def db_insert_data():
 
     sql = 'INSERT INTO chatbot(username, jointime, location, gamescore, newskeyword) VALUES (:name, :time, :loca, :score, :search_word)'
     m.cursor.execute(sql, name=m.name, time=m.now,

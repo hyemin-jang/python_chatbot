@@ -10,7 +10,9 @@ words = {'class' : '설계도' ,
 def hangmanGame():
     global life, unknown, user_input, checked_letter, hg_score
     
-    print('\n*********************** java 용어 맞추기 게임 ***********************')
+    message= ' JAVA 용어 맞추기 게임 '
+    print('='*((100-len(message))//2) + message + '='*((100-len(message))//2))
+
     time.sleep(1.5)
     print('목숨이 사라지기 전에 무슨 단어인지 맞춰주세요!')
     time.sleep(1.5)

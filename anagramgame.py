@@ -7,7 +7,9 @@ words = ['select', 'rollup', 'subquery', 'inner join']
 
 def anagramGame():    
     global ag_score    
-    print('\n*********************** oracle 용어 맞추기 게임 ***********************')
+    message= ' ORACLE 용어 맞추기 게임 '
+    print('='*((100-len(message))//2) + message + '='*((100-len(message))//2))
+
     time.sleep(1.5)
     print('수업에서 배운 용어들이 순서가 뒤죽박죽되어 나타납니다.')
     time.sleep(1.5)

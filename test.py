@@ -1,3 +1,3 @@
 from main import *
 
-chatbot()
+db_connect()
