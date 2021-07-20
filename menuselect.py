@@ -6,7 +6,7 @@ import random
 import main as m
 
 def select_menu():
-    print('========================== 랜덤 메뉴 추천 ===========================')
+    print('========================================== 랜덤 메뉴 추천 ===========================================')
     inputed_num1 = input("1: 메뉴 추천받기 \t 2: 메뉴 추가하기 \n")
     if inputed_num1 == '1':
         random_menu()
@@ -38,8 +38,9 @@ def add_menu():
 
 def random_menu():
     query = '''
-    select *
+    select distinct foodname, foodtype
     from foodlist
+    where foodname is not null
     '''
     df = pd.read_sql(query, m.connection)
 
