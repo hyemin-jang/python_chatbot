@@ -32,7 +32,8 @@ def chatbot():
 
 def startChat():
     time.sleep(1)
-    print("============================== start! ==============================")
+    start = " start! "
+    print("="*((100-len(start))//2) + start + "="*((100-len(start))//2))
     print("안녕하세요. 채팅을 시작합니다.")
     time.sleep(1)
 
@@ -50,14 +51,14 @@ def startChat():
 def endChat():
     time.sleep(1)
     print("다음에 이야기 나눠요~!")
-    print("============================== end! ==============================")
+    end = " end! "
+    print("="*((100-len(end))//2) + end + "="*((100-len(end))//2))
 
     if (name):
         db.db()
 
 
 def choose():
-    print()
     time.sleep(1)
     print(name + "님, 무엇을 도와드릴까요?")
     time.sleep(1)
@@ -103,6 +104,6 @@ def func():
 
     print()
     time.sleep(1)
-    print("----------------------------------------"*3)
+    print("===================="*5)
     time.sleep(1)
     choose()
