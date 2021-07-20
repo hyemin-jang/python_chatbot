@@ -13,7 +13,7 @@ def miniGame():
     
     playing = 'y'    
     while playing == 'y':
-        print('*********************** 무엇을 플레이하실래요? ***********************')
+        print('*'*44+'무엇을 플레이하실래요?'+'*'*45)
         print('1.기억력 테스트   2.용어 복습 게임(oracle)   3.용어 복습 게임(java)   4.나가기')
         choice = input('번호를 입력해주세요 >> ')
         if choice == '1':
