@@ -17,23 +17,14 @@ import check_db_info as di
 # db 연동
 import dbconnect as db
 
-<<<<<<< HEAD
 
-def data():
+def db_connect():
     global connection, cursor
     cx_Oracle.init_oracle_client(
-        lib_dir=r"C:\playdata\oracle\instantclient_19_11")
+        lib_dir=r"C:\management\oraclework\instantclient_19_11")
     connection = cx_Oracle.connect(
         user='ora01', password='oracle_4U2021', dsn='mydb_high')
     cursor = connection.cursor()
-
-=======
-def db_connect():
-    global connection, cursor
-    cx_Oracle.init_oracle_client(lib_dir=r"C:\management\oraclework\instantclient_19_11")
-    connection = cx_Oracle.connect(user='ora01', password='oracle_4U2021', dsn='mydb_high')
-    cursor = connection.cursor()
->>>>>>> 043a0ad73abd6699efde7f0afc89ea34e4283450
     chatbot()
 
 
@@ -132,8 +123,3 @@ def func():
     print("===================="*5)
     time.sleep(1)
     choose()
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 043a0ad73abd6699efde7f0afc89ea34e4283450
