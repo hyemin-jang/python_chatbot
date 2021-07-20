@@ -2,7 +2,6 @@ import time
 from datetime import datetime
 
 # db 연동에 필요한 패키지 import
-import pandas as pd
 import cx_Oracle
 
 # 각각 기능 담은 파일 import
@@ -13,7 +12,7 @@ import menuselect as ms
 import minigame as mg
 import corona as cn
 import news as n
-
+import check_db_info as di
 # db 연동
 import dbconnect as db
 
@@ -77,9 +76,9 @@ def choose():
 
     global cnum
     cnum = input(
-        "1:날씨 정보 \t 2:플레이데이터 시간표 \t 3:점심메뉴 고르기\n4:미니게임 \t 5: 코로나 확진 현황 \t 6: 오늘의 뉴스 정보\t 999: 챗봇 종료\n")
+        "1:날씨 정보 \t 2:플레이데이터 시간표 \t 3:점심메뉴 고르기\n4:미니게임 \t 5: 코로나 확진 현황 \t 6: 오늘의 뉴스 정보\t 7: 플레이 유저 정보 조회\t 999: 챗봇 종료\n")
 
-    clist = ["1", "2", "3", "4", "5", "6"]
+    clist = ["1", "2", "3", "4", "5", "6", "7"]
     if cnum in clist:
         func()
     elif cnum == "999":
@@ -110,9 +109,13 @@ def func():
     elif cnum == "6":
         time.sleep(1)
         n.todayNews()
-
+    elif cnum == "7":
+        time.sleep(1)
+        di.list_dbInfo()
     print()
     time.sleep(1)
     print("===================="*5)
     time.sleep(1)
     choose()
+
+print(chatbot())
