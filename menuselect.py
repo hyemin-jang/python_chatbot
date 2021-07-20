@@ -5,6 +5,7 @@ import random
 # main import
 import main as m
 
+
 def select_menu():
     print('========================================== 랜덤 메뉴 추천 ===========================================')
     inputed_num1 = input("1: 메뉴 추천받기 \t 2: 메뉴 추가하기 \n")
@@ -17,13 +18,17 @@ def select_menu():
         time.sleep(1)
         select_menu()
 
-inputed_type=None 
-inputed_name=None
+
+inputed_type = None
+inputed_name = None
+
+
 def add_menu():
     global inputed_type, inputed_name
     inputed_type = input("한식, 중식, 일식, 양식, 아시아 중 하나를 선택해주세요 : ")
     inputed_name = input("\n음식 이름을 입력해주세요 : ")
-    inputed_num2 = input("\n추가되었습니다 \n 1: 메뉴 다시 추가하기 \t 2: 메뉴 추천받기 \t 3: 종료하기 ")
+    inputed_num2 = input(
+        "\n추가되었습니다 \n 1: 메뉴 다시 추가하기 \t 2: 메뉴 추천받기 \t 3: 종료하기 ")
     if inputed_num2 == '1':
         add_menu()
     elif inputed_num2 == '2':
@@ -66,7 +71,6 @@ def random_menu():
         random_menu()
 
 
-
 def select_after():
     inputed_num3 = input("1: 밥 값 내기 사다리 타기 \t 2: 다시선택하기 \t 3: 종료하기\n")
     if inputed_num3 == '1':
@@ -91,7 +95,7 @@ def game():
     time.sleep(1)
     print('오늘은 ' + winner + '(이)가 쏜다!!')
 
+
 def endSelect():
     time.sleep(1)
     print("식사 맛있게 하세요~~")
-    

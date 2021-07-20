@@ -13,11 +13,12 @@ import minigame as mg
 import corona as cn
 import news as n
 import check_db_info as di
+
 # db 연동
 import dbconnect as db
 
 
-def chatbot():
+def data():
     global connection, cursor
     cx_Oracle.init_oracle_client(
         lib_dir=r"C:\playdata\oracle\instantclient_19_11")
@@ -25,6 +26,10 @@ def chatbot():
         user='ora01', password='oracle_4U2021', dsn='mydb_high')
     cursor = connection.cursor()
 
+    chatbot()
+
+
+def chatbot():
     answer = input("채팅을 시작하시겠습니까?  Y or N\n")
 
     if answer in ["Y", "y"]:
@@ -119,5 +124,3 @@ def func():
     print("===================="*5)
     time.sleep(1)
     choose()
-
-print(chatbot())

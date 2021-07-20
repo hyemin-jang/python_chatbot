@@ -4,7 +4,7 @@ import print_schedule as schedule
 
 def schedule_check():
     print("오늘 배울 공부 시간표와 선행학습할 내용을 확인할 수 있습니다. 어떤 것을 선택하시겠습니까?")
-    print("===================================================================================")
+    print("="*100)
 
     while True:
         time.sleep(2)
