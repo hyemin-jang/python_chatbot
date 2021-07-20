@@ -3,7 +3,7 @@ import requests
 from bs4 import BeautifulSoup
 import time
 
-
+search_word = None
 def todayNews():
 
     titles = []

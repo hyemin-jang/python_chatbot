@@ -1,6 +1,10 @@
 import time
 from datetime import datetime
 
+# db 연동에 필요한 패키지 import
+import pandas as pd
+import cx_Oracle
+
 # 각각 기능 담은 파일 import
 import alarm as al
 import weather as wt
@@ -15,6 +19,11 @@ import dbconnect as db
 
 
 def chatbot():
+    global connection, cursor
+    cx_Oracle.init_oracle_client(lib_dir=r"C:\oracle\instantclient_19_11")
+    connection = cx_Oracle.connect(user='ora01', password='oracle_4U2021', dsn='mydb_high')
+    cursor = connection.cursor()
+    
     answer = input("채팅을 시작하시겠습니까?  Y or N\n")
 
     if answer in ["Y", "y"]:
