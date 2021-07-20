@@ -1,6 +1,3 @@
-# db 연동에 필요한 패키지 import
-import pandas as pd
-import cx_Oracle
 
 # main import
 import main as m
