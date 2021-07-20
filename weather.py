@@ -2,6 +2,7 @@ from bs4 import BeautifulSoup
 import requests
 import time
 
+
 html = requests.get('https://search.naver.com/search.naver?query=날씨')
 
 soup = BeautifulSoup(html.text, 'html.parser')

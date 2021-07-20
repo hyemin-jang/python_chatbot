@@ -1,4 +1,5 @@
 import time
+from datetime import datetime
 
 # 각각 기능 담은 파일 import
 import alarm as al
@@ -8,6 +9,9 @@ import menuselect as ms
 import minigame as mg
 import corona as cn
 import news as n
+
+# db 연동
+import dbconnect as db
 
 
 def chatbot():
@@ -28,25 +32,33 @@ def chatbot():
 
 def startChat():
     time.sleep(1)
-    print("============================== start! ==============================")
+    start = " start! "
+    print("="*((100-len(start))//2) + start + "="*((100-len(start))//2))
     print("안녕하세요. 채팅을 시작합니다.")
     time.sleep(1)
 
     al.qrcheck()
     time.sleep(1)
-    global name
+
+    global name, now
+
     name = input("\n이름을 입력해주세요.\n")
+    now = datetime.now()
+
     choose()
 
 
 def endChat():
     time.sleep(1)
     print("다음에 이야기 나눠요~!")
-    print("============================== end! ==============================")
+    end = " end! "
+    print("="*((100-len(end))//2) + end + "="*((100-len(end))//2))
+
+    if (name):
+        db.db()
 
 
 def choose():
-    print()
     time.sleep(1)
     print(name + "님, 무엇을 도와드릴까요?")
     time.sleep(1)
@@ -92,6 +104,6 @@ def func():
 
     print()
     time.sleep(1)
-    print("----------------------------------------"*3)
+    print("===================="*5)
     time.sleep(1)
     choose()

@@ -1,11 +1,15 @@
 import time
 
-def hangmanGame():
-    global words, life, unknown, user_input, checked_letter
-    words = {'class' : '설계도' ,
-             'instance' : 'A a = new A()', 
-             'overriding' : '메소드 OOOOO'}
+hg_score = 0
+words = {'class' : '설계도' ,
+            'instance' : 'A a = new A()', 
+            'overriding' : '메소드 OOOOO'}
 
+
+
+def hangmanGame():
+    global life, unknown, user_input, checked_letter, hg_score
+    
     print('\n*********************** java 용어 맞추기 게임 ***********************')
     time.sleep(1.5)
     print('목숨이 사라지기 전에 무슨 단어인지 맞춰주세요!')
@@ -23,21 +27,25 @@ def hangmanGame():
         while unknown.count('_') > 0 and life > 0: 
             print('\n남은 목숨:', '♥ '*life)
             print(unknown, ' 힌트:', words[word])        
-            user_input = input('>> ')
+            user_input = input('>> ')            
             
             validCheck(word)       
             letterCheck(word)  
+
         # 성공/실패 여부 확인    
         successCheck(word) 
         round += 1
 
-        if success == False:
+        if success == True:
+            hg_score += 10
+        else:
             break
         if round < len(words):
             print('다음 단계로 넘어갑니다.')
             time.sleep(1)        
             
-    print('게임이 끝났습니다 :)') 
+    print('게임이 끝났습니다:)\n( java 용어 맞추기 게임 총점수:',hg_score,')')
+    time.sleep(2)
 
 
 def validCheck(word):     
