@@ -61,8 +61,7 @@ def rank_player_score():
         이름 =df_chatbot['USERNAME'][i].upper() + "님"
         스코어 = "총 스코어: " + str(df_chatbot['GAMESCORE'][i])
         현시각 = "플레이 시간: " + df_chatbot['JOINTIME'][i].strftime('%Y-%m-%d %H:%M:%S')
-        위치 = "플레이 위치: " + df_chatbot['LOCATION'][i]
-        line_new = '{:^12} {:^25}|| {:^35} || {:^35} || {:35}'.format(등수, 이름, 스코어, 현시각, 위치)
+        line_new = '{:^3} {:^15}|| {:^15} || {:^15}'.format(등수, 이름, 스코어, 현시각)
         time.sleep(1)
         print(line_new)
         
