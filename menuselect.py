@@ -6,7 +6,9 @@ import random
 import main as m
 
 def select_menu():
-    print('========================================== 랜덤 메뉴 추천 ===========================================')
+    start = " 랜덤 메뉴 추천 "
+    print("="*((100-len(start))//2) + start + "="*((100-len(start))//2))
+    
     inputed_num1 = input("1: 메뉴 추천받기 \t 2: 메뉴 추가하기 \n")
     if inputed_num1 == '1':
         random_menu()
@@ -52,7 +54,8 @@ def random_menu():
         "아시아": list(df[df.FOODTYPE == '아시아']['FOODNAME']),
         "랜덤": list(df['FOODNAME'])
     }
-    print('\n======================== 메뉴를 추천해드릴게요 ======================')
+    recommend= " 메뉴를 추천해드릴게요 "
+    print("="*((100-len(recommend))//2) + recommend + "="*((100-len(recommend))//2))
     inputed_menu = input("한식, 중식, 일식, 양식, 아시아, 랜덤 중 하나를 선택해주세요 : ")
     if inputed_menu in food_lists:
         food = random.choice(food_lists[inputed_menu])
