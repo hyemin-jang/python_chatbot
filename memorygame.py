@@ -6,7 +6,9 @@ level = [6, 8, 10]
 
 def memoryGame():    
     global mg_score  
-    print('\n*********************** 기억력 테스트 게임 ***********************')
+    message= ' 기억력 테스트 게임 '
+    print('='*((100-len(message))//2) + message + '='*((100-len(message))//2))
+   
     time.sleep(1.5)
     print('숫자가 나온 순서대로 입력해주세요!')
     time.sleep(1.5)
