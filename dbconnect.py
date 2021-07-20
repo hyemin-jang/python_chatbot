@@ -30,7 +30,7 @@ def db():
 
     sql = 'INSERT INTO chatbot(username, jointime, location, gamescore, newskeyword) VALUES (:name, :time, :loca, :score, :search_word)'
     cursor.execute(sql, name=m.name, time=m.now,
-                   loca=m.wt.location, score=m.mg.score, search_word=m.ns.search_word)
+                   loca=m.wt.location, score=m.mg.score, search_word=m.n.search_word)
 
     connection.commit()
     cursor.close()

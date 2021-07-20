@@ -7,6 +7,8 @@ import time
 def todayNews():
 
     titles = []
+
+    global search_word
     search_word = input("보고 싶은 뉴스 키워드를 입력하세요\n")
     url = f'https://m.search.naver.com/search.naver?where=m_news&sm=mtb_jum&query={search_word}'
     req = requests.get(url)
@@ -25,5 +27,5 @@ def todayNews():
     for i in range(5):
         print("-", titles[i])
 
-#     뉴스 링크 추가하기 
+#     뉴스 링크 추가하기
 #     print(nkeyword)

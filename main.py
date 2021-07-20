@@ -42,7 +42,7 @@ def startChat():
 
     global name, now
 
-    name = input("\n이름을 입력해주세요.\n")
+    name = input("이름을 입력해주세요.\n")
     now = datetime.now()
 
     choose()
@@ -60,7 +60,7 @@ def endChat():
 
 def choose():
     time.sleep(1)
-    print(name + "님, 무엇을 도와드릴까요?")
+    print("\n" + name + "님, 무엇을 도와드릴까요?")
     time.sleep(1)
 
     print("실행하고 싶은 메뉴 번호를 입력해주세요.")
