@@ -1,4 +1,9 @@
+import os
+os.chdir('C:\\Users\\USER\\Desktop\\python_chatbot-db_connect')
+os.getcwd()
+
 import time
+from datetime import datetime
 
 # 각각 기능 담은 파일 import
 import alarm as al
@@ -8,6 +13,12 @@ import menuselect as ms
 import minigame as mg
 import corona as cn
 import news as n
+import check_db_info as di
+
+# db 연동
+import dbconnect as db
+
+
 
 
 def chatbot():
@@ -28,27 +39,35 @@ def chatbot():
 
 def startChat():
     time.sleep(1)
-    print("============================== start! ==============================")
+    start = " start! "
+    print("="*((100-len(start))//2) + start + "="*((100-len(start))//2))
     print("안녕하세요. 채팅을 시작합니다.")
     time.sleep(1)
 
     al.qrcheck()
     time.sleep(1)
-    global name
-    name = input("\n이름을 입력해주세요.\n")
+
+    global name, now
+
+    name = input("이름을 입력해주세요.\n")
+    now = datetime.now()
+
     choose()
 
 
 def endChat():
     time.sleep(1)
     print("다음에 이야기 나눠요~!")
-    print("============================== end! ==============================")
+    end = " end! "
+    print("="*((100-len(end))//2) + end + "="*((100-len(end))//2))
+
+    if (name):
+        db.db()
 
 
 def choose():
-    print()
     time.sleep(1)
-    print(name + "님, 무엇을 도와드릴까요?")
+    print("\n" + name + "님, 무엇을 도와드릴까요?")
     time.sleep(1)
 
     print("실행하고 싶은 메뉴 번호를 입력해주세요.")
@@ -56,9 +75,9 @@ def choose():
 
     global cnum
     cnum = input(
-        "1:날씨 정보 \t 2:플레이데이터 시간표 \t 3:점심메뉴 고르기\n4:미니게임 \t 5: 코로나 확진 현황 \t 6: 오늘의 뉴스 정보\t 999: 챗봇 종료\n")
+        "1:날씨 정보 \t 2:플레이데이터 시간표 \t 3:점심메뉴 고르기\n4:미니게임 \t 5: 코로나 확진 현황 \t 6: 오늘의 뉴스 정보\t 7: 플레이어 정보 조회\t 999: 챗봇 종료\n")
 
-    clist = ["1", "2", "3", "4", "5", "6"]
+    clist = ["1", "2", "3", "4", "5", "6", "7"]
     if cnum in clist:
         func()
     elif cnum == "999":
@@ -89,9 +108,12 @@ def func():
     elif cnum == "6":
         time.sleep(1)
         n.todayNews()
+    elif cnum == "7":
+        time.sleep(1)
+        di.list_dbInfo()
 
     print()
     time.sleep(1)
-    print("----------------------------------------"*3)
+    print("===================="*5)
     time.sleep(1)
     choose()
