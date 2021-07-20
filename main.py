@@ -1,7 +1,3 @@
-import os
-os.chdir('C:\\Users\\USER\\Desktop\\python_chatbot-db_connect')
-os.getcwd()
-
 import time
 from datetime import datetime
 
