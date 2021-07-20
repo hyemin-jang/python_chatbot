@@ -20,10 +20,12 @@ import dbconnect as db
 
 def chatbot():
     global connection, cursor
-    cx_Oracle.init_oracle_client(lib_dir=r"C:\oracle\instantclient_19_11")
-    connection = cx_Oracle.connect(user='ora01', password='oracle_4U2021', dsn='mydb_high')
+    cx_Oracle.init_oracle_client(
+        lib_dir=r"C:\playdata\oracle\instantclient_19_11")
+    connection = cx_Oracle.connect(
+        user='ora01', password='oracle_4U2021', dsn='mydb_high')
     cursor = connection.cursor()
-    
+
     answer = input("채팅을 시작하시겠습니까?  Y or N\n")
 
     if answer in ["Y", "y"]:
