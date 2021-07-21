@@ -27,8 +27,8 @@ inputed_name = None
 
 def add_menu():
     global inputed_type, inputed_name
-    inputed_type = input("한식, 중식, 일식, 양식, 아시아 중 하나를 선택해주세요 : ")
-    inputed_name = input("\n음식 이름을 입력해주세요 : ")
+    inputed_type = (input("한식, 중식, 일식, 양식, 아시아 중 하나를 선택해주세요 : ")).replace(" ","")
+    inputed_name = (input("\n음식 이름을 입력해주세요 : ")).replace(" ","")
     inputed_num2 = input(
         "\n추가되었습니다 \n 1: 메뉴 다시 추가하기 \t 2: 메뉴 추천받기 \t 3: 종료하기 ")
     if inputed_num2 == '1':
@@ -61,7 +61,7 @@ def random_menu():
     }
     recommend= " 메뉴를 추천해드릴게요 "
     print("="*((100-len(recommend))//2) + recommend + "="*((100-len(recommend))//2))
-    inputed_menu = input("한식, 중식, 일식, 양식, 아시아, 랜덤 중 하나를 선택해주세요 : ")
+    inputed_menu = input("한식, 중식, 일식, 양식, 아시아, 랜덤 중 하나를 선택해주세요 : ").replace(" ","")
     if inputed_menu in food_lists:
         food = random.choice(food_lists[inputed_menu])
         print('\n오늘의 점심은 ~~??\n')
