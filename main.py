@@ -20,10 +20,7 @@ import dbconnect as db
 
 def db_connect():
     global connection, cursor
-    cx_Oracle.init_oracle_client(
-        lib_dir="C:\playdata\oracle\instantclient_19_11")
-    connection = cx_Oracle.connect(
-        user='ora01', password='oracle_4U2021', dsn='mydb_high')
+    connection = cx_Oracle.connect('ora01', 'oracle_4U', 'localhost:1521/xe')
     cursor = connection.cursor()
     chatbot()
 
