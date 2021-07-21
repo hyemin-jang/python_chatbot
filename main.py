@@ -22,22 +22,26 @@ def db_connect():
     global connection, cursor
     connection = cx_Oracle.connect('ora01', 'oracle_4U', 'localhost:1521/xe')
     cursor = connection.cursor()
-    cursor.execute('''
-    create table chatbot (username varchar2(20),
-                        jointime date,
-                        location varchar2(100),
-                        gamescore number(5,2),
-                        newskeyword varchar2(20))''')
-    cursor.execute('''
-    create table foodlist (username varchar2(20),
-                        foodtype varchar2(20),
-                        foodname varchar2(20))''')
-    rows = [ ('test', '한식', '비빔밥'),
-            ('test', '중식', '짜장면'),
-            ('test', '일식', '초밥'),
-            ('test', '양식', '파스타'),
-            ('test', '아시아', '쌀국수') ]
-    cursor.executemany("insert into foodlist(username, foodtype, foodname) values (:1, :2, :3)", rows)
+    try:
+        cursor.execute('''    
+        create table chatbot (username varchar2(20),
+                            jointime date,
+                            location varchar2(100),
+                            gamescore number(5,2),
+                            newskeyword varchar2(20))''')
+        cursor.execute('''
+        create table foodlist (username varchar2(20),
+                            foodtype varchar2(20),
+                            foodname varchar2(20))''')
+        rows = [('test', '한식', '비빔밥'),
+                ('test', '중식', '짜장면'),
+                ('test', '일식', '초밥'),
+                ('test', '양식', '파스타'),
+                ('test', '아시아', '쌀국수')]
+        cursor.executemany(
+            "insert into foodlist(username, foodtype, foodname) values (:1, :2, :3)", rows)
+    except:
+        pass
 
     chatbot()
 
