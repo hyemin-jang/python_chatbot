@@ -20,8 +20,7 @@ import dbconnect as db
 
 def db_connect():
     global connection, cursor
-    cx_Oracle.init_oracle_client(
-        lib_dir=r"C:\management\oraclework\instantclient_19_11")
+    cx_Oracle.init_oracle_client(lib_dir="C:\oracle\instantclient_19_11")
     connection = cx_Oracle.connect(
         user='ora01', password='oracle_4U2021', dsn='mydb_high')
     cursor = connection.cursor()
@@ -42,6 +41,9 @@ def chatbot():
         print("Y 혹은 N로 대답해주세요.\n")
         time.sleep(1)
         chatbot()
+
+
+name = None
 
 
 def startChat():
