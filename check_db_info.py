@@ -31,7 +31,7 @@ def list_dbInfo():
 
 def check_player_time():
     query = '''select * from chatbot'''
-    #connection = cx_Oracle.connect(user='ora01', password='oracle_4U2021', dsn='mydb_high')
+    # connection = cx_Oracle.connect(user='ora01', password='oracle_4U2021', dsn='mydb_high')
     df_chatbot = pd.read_sql(query, m.connection)
     name_count = dict()
 
@@ -48,14 +48,18 @@ def check_player_time():
 
     sort_player_frequency = sorted(name_count.items(), key=lambda x: x[1])
 
+    count = 0
     for 이름, 횟수 in reversed(sort_player_frequency):
         if 횟수 > 1:
             time.sleep(1)
             print("플레이어 {0}님, 총 {1}회 실행하였습니다".format(이름, 횟수))
+            count += 1
+            if (count == 5):
+                break
 
 
 def rank_player_score():
-    #connection = cx_Oracle.connect(user='ora01', password='oracle_4U2021', dsn='mydb_high')
+    # connection = cx_Oracle.connect(user='ora01', password='oracle_4U2021', dsn='mydb_high')
     query = '''select * from chatbot where (USERNAME is not null) AND (JOINTIME is not null) AND (LOCATION is not null) AND (GAMESCORE is not null)  order by GAMESCORE desc'''
     df_chatbot = pd.read_sql(query, m.connection)
 
@@ -65,6 +69,6 @@ def rank_player_score():
         스코어 = "총 스코어: " + str(df_chatbot['GAMESCORE'][i])
         현시각 = "플레이 시간: " + \
             df_chatbot['JOINTIME'][i].strftime('%Y-%m-%d %H:%M:%S')
-        line_new = '{:^3} {:^15}|| {:^15} || {:^15}'.format(등수, 이름, 스코어, 현시각)
         time.sleep(1)
+        line_new = '{:^3} {:^15}|| {:^15} || {:^15}'.format(등수, 이름, 스코어, 현시각)
         print(line_new)
