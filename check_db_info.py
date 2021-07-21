@@ -31,7 +31,6 @@ def list_dbInfo():
 
 def check_player_time():
     query = '''select * from chatbot'''
-    # connection = cx_Oracle.connect(user='ora01', password='oracle_4U2021', dsn='mydb_high')
     df_chatbot = pd.read_sql(query, m.connection)
     name_count = dict()
 
@@ -59,10 +58,10 @@ def check_player_time():
 
 
 def rank_player_score():
-    # connection = cx_Oracle.connect(user='ora01', password='oracle_4U2021', dsn='mydb_high')
     query = '''select * from chatbot where (USERNAME is not null) AND (JOINTIME is not null) AND (LOCATION is not null) AND (GAMESCORE is not null)  order by GAMESCORE desc'''
     df_chatbot = pd.read_sql(query, m.connection)
 
+    count = 0
     for i in range(len(df_chatbot)):
         등수 = str(i+1) + "등:"
         이름 = df_chatbot['USERNAME'][i].upper() + "님"
@@ -72,3 +71,6 @@ def rank_player_score():
         time.sleep(1)
         line_new = '{:^3} {:^15}|| {:^15} || {:^15}'.format(등수, 이름, 스코어, 현시각)
         print(line_new)
+        count += 1
+        if (count == 5):
+            break
