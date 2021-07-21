@@ -21,7 +21,7 @@ import dbconnect as db
 def db_connect():
     global connection, cursor
     cx_Oracle.init_oracle_client(
-        lib_dir="C:\playdata\oracle\instantclient_19_11")
+        lib_dir="C:\oracle\instantclient_19_11")
     connection = cx_Oracle.connect(
         user='ora01', password='oracle_4U2021', dsn='mydb_high')
     cursor = connection.cursor()
@@ -59,7 +59,7 @@ def startChat():
 
     global name, now
 
-    name = input("이름을 입력해주세요.\n")
+    name = input("이름을 입력해주세요.\n").replace(" ", "")
     now = datetime.now()
 
     choose()

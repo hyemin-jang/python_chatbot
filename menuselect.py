@@ -27,20 +27,22 @@ inputed_name = None
 
 def add_menu():
     global inputed_type, inputed_name
-    inputed_type = (input("한식, 중식, 일식, 양식, 아시아 중 하나를 선택해주세요 : ")).replace(" ","")
-    inputed_name = (input("\n음식 이름을 입력해주세요 : ")).replace(" ","")
-    inputed_num2 = input(
-        "\n추가되었습니다 \n 1: 메뉴 다시 추가하기 \t 2: 메뉴 추천받기 \t 3: 종료하기 ")
-    if inputed_num2 == '1':
+    inputed_type = input("한식, 중식, 일식, 양식, 아시아 중 하나를 선택해주세요 : ").replace(" ", "")
+    if inputed_type not in ["한식", "중식", "일식", "양식", "아시아"]:
         add_menu()
-    elif inputed_num2 == '2':
-        random_menu()
-    elif inputed_num2 == '3':
-        endSelect()
     else:
-        print("\n잘못 입력하셨습니다. 다시 입력해주세요.\n")
-        time.sleep(1)
-        add_menu()
+        inputed_name = input("\n음식 이름을 입력해주세요 : ").replace(" ", "")
+        inputed_num2 = input("\n추가되었습니다 \n 1: 메뉴 다시 추가하기 \t 2: 메뉴 추천받기 \t 3: 종료하기 ")
+        if inputed_num2 == '1':
+            add_menu()
+        elif inputed_num2 == '2':
+            random_menu()
+        elif inputed_num2 == '3':
+            endSelect()
+        else:
+            print("\n잘못 입력하셨습니다. 다시 입력해주세요.\n")
+            time.sleep(1)
+            add_menu()
 
 
 def random_menu():
