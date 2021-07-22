@@ -7,6 +7,7 @@
 
 ## 📄 서비스 구성도
 <img width="398" alt="서비스 구성도" src="https://user-images.githubusercontent.com/68639271/126582999-2f8d17c8-c728-48fa-8218-a0fdf19e99c6.png">
+
 - 서비스 전체 실행(test.py), 챗봇 기능 실행(main.py), 데이터베이스 연동(dbconnect.py)
 - 입실/퇴실 알림(alarm.py)
 - 날씨 정보(weather.py)
