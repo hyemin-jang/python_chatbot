@@ -7,15 +7,15 @@
 
 ## 📄 서비스 구성도
 
-- 0) 서비스 전체 실행(test.py), 챗봇 기능 실행(main.py), 데이터베이스 연동(dbconnect.py)
-- 1) 입실/퇴실 알림(alarm.py)
-- 2) 날씨 정보(weather.py)
-- 3) 플레이데이터 시간표(schedule_check.py, print_schedule.py, CONST.py)
-- 4) 점심메뉴 고르기(menuselect.py)
-- 5) 미니게임(minigame.py, memorygame.py, anagramgame.py, hangmangame.py)
-- 6) 코로나 확진 현황(corona.py)
-- 7) 오늘의 뉴스 정보(news.py)
-- 8) 플레이 유저 정보 조회(check_db_info.py)
+- 서비스 전체 실행(test.py), 챗봇 기능 실행(main.py), 데이터베이스 연동(dbconnect.py)
+- 입실/퇴실 알림(alarm.py)
+- 날씨 정보(weather.py)
+- 플레이데이터 시간표(schedule_check.py, print_schedule.py, CONST.py)
+- 점심메뉴 고르기(menuselect.py)
+- 미니게임(minigame.py, memorygame.py, anagramgame.py, hangmangame.py)
+- 코로나 확진 현황(corona.py)
+- 오늘의 뉴스 정보(news.py)
+- 플레이 유저 정보 조회(check_db_info.py)
 
 ## 👨‍👨‍👧 구성원
 - 민경준(팀장) : 플레이데이터 시간표, 플레이 유저 정보 조회 [Cameron Min Github](https://github.com/keyongjun)
