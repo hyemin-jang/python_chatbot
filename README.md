@@ -19,7 +19,8 @@
 
 ## 🎮 Technical Report 및 실행파일
 https://drive.google.com/drive/folders/1yjIpyjpNAMGRlD5-iXID92mkpZov813r?usp=sharing
-
+- '플레e봇(1.2)_cloud.zip' 다운로드 및 압축 해제
+- '[플레e봇]실행 전 읽기' 텍스트 파일 안내에 따라 플레e봇.exe 실행
 
 
 ## 👨‍👨‍👧 구성원
