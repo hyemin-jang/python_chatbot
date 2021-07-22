@@ -28,4 +28,4 @@ https://drive.google.com/drive/folders/1yjIpyjpNAMGRlD5-iXID92mkpZov813r?usp=sha
 - 장혜민 : 미니게임 3종 [hyemin-jang Github](https://github.com/hyemin-jang)
 - 박서은 : 입실/퇴실 알림, 오늘의 뉴스 정보 [westsi1ver Github](https://github.com/westsi1ver)
 - 박세은 : 점심메뉴 고르기 [sennyS2 Github](https://github.com/seeun214)
-- 배지수 : 날씨 정보, 코로나 확진 현황, 챗봇 기능 실행 [geesuee Github](https://github.com/geesuee)
+- 배지수 : 날씨 정보, 코로나 확진 현황, 챗봇 기능 실행 [geesuee Github](https://github.com/geesuee) / [velog 파이썬 챗봇 시리즈](https://velog.io/@geesuee/series/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%B1%97%EB%B4%87)
