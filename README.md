@@ -21,6 +21,6 @@
 ## 👨‍👨‍👧 구성원
 - 민경준(팀장) : 플레이데이터 시간표, 플레이 유저 정보 조회 [Cameron Min Github](https://github.com/keyongjun)
 - 장혜민 : 미니게임 3종 [hyemin-jang Github](https://github.com/hyemin-jang)
-- 박서은 : 입실/퇴실 알림 [westsi1ver Github](https://github.com/westsi1ver)
+- 박서은 : 입실/퇴실 알림, 오늘의 뉴스 정보 [westsi1ver Github](https://github.com/westsi1ver)
 - 박세은 : 점심메뉴 고르기 [sennyS2 Github](https://github.com/seeun214)
 - 배지수 : 날씨 정보, 코로나 확진 현황, 챗봇 기능 실행 [geesuee Github](https://github.com/geesuee)
