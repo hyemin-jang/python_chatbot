@@ -17,6 +17,11 @@
 - 오늘의 뉴스 정보(news.py)
 - 플레이 유저 정보 조회(check_db_info.py)
 
+## 🎮 Technical Report 및 실행파일
+https://drive.google.com/drive/folders/1yjIpyjpNAMGRlD5-iXID92mkpZov813r?usp=sharing
+
+
+
 ## 👨‍👨‍👧 구성원
 - 민경준(팀장) : 플레이데이터 시간표, 플레이 유저 정보 조회 [Cameron Min Github](https://github.com/keyongjun)
 - 장혜민 : 미니게임 3종 [hyemin-jang Github](https://github.com/hyemin-jang)
